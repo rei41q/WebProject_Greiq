@@ -4,7 +4,7 @@
 
 2. Posts
 
-* table user akan menyimpan 
+* table users akan menyimpan 
         {   id, 
         fullname, 
         email, 
