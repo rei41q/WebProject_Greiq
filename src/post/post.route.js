@@ -10,7 +10,7 @@ postRouter.post("/posts", tokenVerification, (postController.postUser))
 
 // -------------------------------------------------------------#
 
-// API GET ALL POST 
+// API GET ALL POST / By Writer
 postRouter.get("/posts", (postController.getAllPost));
 
 //------------------------------------------------------------#

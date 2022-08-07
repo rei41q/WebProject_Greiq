@@ -8,8 +8,8 @@ POST http://localhost:8000/user/registration
 Content-Type: application/json
 
 {
-    "fullname": "greiq 2",
-    "email": "greiq3@gmail.com",
+    "fullname": "greiq4",
+    "email": "greiq4@gmail.com",
     "password": "12345678"
 }
 
@@ -19,7 +19,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiq2@gmail.com",
+    "email": "greiq4@gmail.com",
     "password": "12345678"
 }
 
@@ -29,10 +29,10 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSAyIiwiZW1haWwiOiJncmVpcTJAZ21haWwuY29tIiwiaWF0IjoxNjU5ODg1MTY1LCJleHAiOjE2NTk5NzE1NjV9.bv0IOajLugi59KxqQQb5oH64XS16AcAR1-Iv7xy_oZI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4ODkxNzYsImV4cCI6MTY1OTk3NTU3Nn0.F3SrKD3yqiggrq03WQCGshQhmT8K_JnnYYG8i6O6P10
 
 {
-    "title": "Pantai Gatra 3",
+    "title": "Pantai Gatra",
     "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
     "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
 }
@@ -43,15 +43,15 @@ GET http://localhost:8000/users
 
 ### API GET ALL POST/ByWRITER | PUBLIC API
 
-GET http://localhost:8000/posts?writer=2
+GET http://localhost:8000/posts?writer=4
 
 ### API GET ONE POST | PUBLIC API
-GET http://localhost:8000/posts/4
+GET http://localhost:8000/posts/7
 
 ### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
 PUT  http://localhost:8000/posts/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFAZ21haWwuY29tIiwiaWF0IjoxNjU5ODY1MTA0LCJleHAiOjE2NTk5NTE1MDR9.EZR1qhu-3P7S5lpc-C3KrEpe-j8fd6yXGhH4uord6CY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4ODkxNzYsImV4cCI6MTY1OTk3NTU3Nn0.F3SrKD3yqiggrq03WQCGshQhmT8K_JnnYYG8i6O6P10
 
 {
     "title": "Update Pantai Gatra",
@@ -62,7 +62,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hb
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
 PUT  http://localhost:8000/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFAZ21haWwuY29tIiwiaWF0IjoxNjU5ODY1MTA0LCJleHAiOjE2NTk5NTE1MDR9.EZR1qhu-3P7S5lpc-C3KrEpe-j8fd6yXGhH4uord6CY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4ODkxNzYsImV4cCI6MTY1OTk3NTU3Nn0.F3SrKD3yqiggrq03WQCGshQhmT8K_JnnYYG8i6O6P10
 
 {
     "fullname" : "greiq2",

@@ -52,7 +52,7 @@
     const getOnePost = async (req, res) => {
     try {
         const { postID } = req.params;
-
+        console.log(postID)
         const getOnePost = await postService.getOnePost(postID);
 
         return res.json(getOnePost);

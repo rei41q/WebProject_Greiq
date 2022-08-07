@@ -13,7 +13,11 @@ const getAllPost = async () => {
 }
 
 const getOnePost = async (postID) =>{
-    return await Post.findbyPk(postID);
+    return await Post.findOne({
+        where:{
+            id: postID
+        }
+    });
 }
 
 const getPostbyWriter = async (writer) =>{
