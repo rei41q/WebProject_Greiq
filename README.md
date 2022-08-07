@@ -1,14 +1,9 @@
-The purpose of this repository is to learn basic setup and learn how to build a blog application using express. 
+# greiq-cp6
 
-How To Run : 
-1. Copy the repository
-2. Go inside the repository
-3. npm install
-4. npx sequelize-cli db:migrate
-5. npm run dev
+KET : CD to this directory
 
-
-==================================================
-1. Buat API registrasi dan implementasi bcrypt untuk simpan password (user.router)
-2. Buat API login, cek password dengan bcrypt, berikan JWT token dengan library jsonwebtoken (auth.router)
-3. Buat middleware untuk cek validitas JWT (middleware/token.verification)# latihancp7
+Langkah Awal Singkat
+1. npm install nodemon express
+2. Create database & Create user and set to env FILE (KET : Change .env.example file to .env)
+3. Migrate & seed
+4. npm start
