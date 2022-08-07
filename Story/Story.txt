@@ -1,0 +1,62 @@
+* Website ini akan memiliki 7 Frontend website:
+
+1. REGISTRASI (Public)
+
+Pada saat masuk menu Regristasi, user akan memasukan
+nama lengkap, email, dan password 
+kemudian klik tombol submit. 
+,
+KET : Jika email sudah terdaftarkan sebelumnya, maka pendaftaran gagal
+
+KET password : password akan diamakan dalam bentuk BCRYPT.
+
+2. LOGIN (Public)
+
+Untuk login, user perlu memasukan email dan password.
+
+KET : Setiap login maka user akan mendapatkan 
+token baru atau bisa diibaratkan tanpa pengenal untuk memasuki setiap API private
+
+3. USER DASHBOARD (Private)
+
+menu ini akan menampilkan semua postingan user yg pernah dibuat sebelumnya, serta tombol
+post untuk membuat postingan
+
+KET : Untuk memasuki User dashboard pengguna memerlukan token yang sebelumnya sudah didapatkan 
+pada saat login.
+
+4. CREATE POST PAGE (Private)
+
+Ketika tombol buat post di klik, akan masuk ke halaman pembuatan
+post. Member dapat membuat judul, menambahkan url image, dan
+post body. Dibagian bawah halaman ada tombol publish untuk
+menyimpan post dan mempublishnya.
+
+KET : memerlukan tanpa pengenal berupa token
+
+5. EDIT POST PAGE (Private)
+
+Ketika tombol edit post di klik, akan masuk ke halaman edit post.
+Form sudah terisi dengan data post yang akan diedit. Member
+dapat merubah judul, url image, dan post body. Dibagian bawah
+halaman ada tombol publish untuk menyimpan post dan
+mempublishnya.
+
+KET : memerlukan tanpa pengenal berupa token
+
+
+6. HOME PAGE (Public)
+
+Semua orang dapat mengunjungi halaman home page dan melihat
+semua post
+
+7. DETAIL POST PAGE (public)
+
+Ketika post di klik, akan dibuka halaman baru dengan seluruh detail
+post
+
+Penjelasakan tentang token :
+
+Token akan menyimpan id, fullname dan existUser.email.
+Setiap kali user berhasil login, maka akan membuat token baru.
+

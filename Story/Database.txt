@@ -1,0 +1,26 @@
+* Website ini akan memiliki 2 database
+
+1. Users
+
+2. Posts
+
+* table user akan menyimpan 
+        {   id, 
+        fullname, 
+        email, 
+        passoword, 
+        createdAt, 
+        updatedAt
+
+
+* table posts akan menyimpan 
+    {   id, 
+        title, 
+        image,
+        body,
+        user_id, 
+        createdAt, 
+        updatedAt
+    }
+
+2 table ini saling berelasi. 

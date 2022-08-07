@@ -1,0 +1,71 @@
+
+
+### API CREATE A NEW USER | JIKA EMAIL SUDAH TERDAFTAR SEBELUMNYA, MAKA PENDAFTARAN GAGAL
+
+### KET : PASSWORD AKAN DI AMANKAN DALAM BENTUK BCRYPT 
+
+POST http://localhost:8000/user/registration
+Content-Type: application/json
+
+{
+    "fullname": "greiq 2",
+    "email": "greiq3@gmail.com",
+    "password": "12345678"
+}
+
+
+### API LOGIN, KET : MENDAPATKAN TOKEN BARU SETIAP KALI LOGIN LAGI
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "email": "greiq2@gmail.com",
+    "password": "12345678"
+}
+
+### API CREATE A NEW POST - 
+
+### KET : JIKA INI PRIVATE API, KITA PERLU MEMASUKAN TOKEN YG TADI SUDAH KAMU DAPATKAN SAAT LOGIN, IBARAT TANDA PENGENAL
+
+POST http://localhost:8000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSAyIiwiZW1haWwiOiJncmVpcTJAZ21haWwuY29tIiwiaWF0IjoxNjU5ODg1MTY1LCJleHAiOjE2NTk5NzE1NjV9.bv0IOajLugi59KxqQQb5oH64XS16AcAR1-Iv7xy_oZI
+
+{
+    "title": "Pantai Gatra 3",
+    "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
+    "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
+}
+
+### API GET ALL USER | PUBLIC API
+
+GET http://localhost:8000/users
+
+### API GET ALL POST/ByWRITER | PUBLIC API
+
+GET http://localhost:8000/posts?writer=2
+
+### API GET ONE POST | PUBLIC API
+GET http://localhost:8000/posts/4
+
+### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
+PUT  http://localhost:8000/posts/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFAZ21haWwuY29tIiwiaWF0IjoxNjU5ODY1MTA0LCJleHAiOjE2NTk5NTE1MDR9.EZR1qhu-3P7S5lpc-C3KrEpe-j8fd6yXGhH4uord6CY
+
+{
+    "title": "Update Pantai Gatra",
+    "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
+    "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
+}
+
+### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
+PUT  http://localhost:8000/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFAZ21haWwuY29tIiwiaWF0IjoxNjU5ODY1MTA0LCJleHAiOjE2NTk5NTE1MDR9.EZR1qhu-3P7S5lpc-C3KrEpe-j8fd6yXGhH4uord6CY
+
+{
+    "fullname" : "greiq2",
+    "email" : "greiq2@gmail.com",
+    "password" : "123456"
+}
