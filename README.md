@@ -2,7 +2,8 @@
 
 KET : CD to this directory
 
-Langkah Awal Singkat
+# How to Use
+
 1. npm install nodemon express
 2. Create database & Create user and set to env FILE (KET : Change .env.example file to .env)
 3. Migrate & seed
