@@ -7,7 +7,7 @@
     error500,
     };
 
-    const postUser = async (req, res) => {
+    const createPost = async (req, res) => {
     try {
         const { title, image, body } = req.body;
         const authUser = req.auth;
