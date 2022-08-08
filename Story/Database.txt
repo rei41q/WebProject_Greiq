@@ -1,4 +1,4 @@
-* Website ini akan memiliki 2 database
+* Website ini akan memiliki 2 table pada database
 
 1. Users
 
