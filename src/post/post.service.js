@@ -1,6 +1,6 @@
 const postRepo = require("./post.repo")
 
-const postService = async ({title, image,body, authUser}) =>{
+const createPost = async ({title, image,body, authUser}) =>{
     return await postRepo.createPost(
         {
         title, 
@@ -37,7 +37,7 @@ const editPost = async({
 }
 
 const FunctionPostService = {
-    postService,
+    createPost,
     getAllPost,
     getOnePost,
     editPost,

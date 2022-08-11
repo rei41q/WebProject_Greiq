@@ -11,7 +11,7 @@
     try {
         const { title, image, body } = req.body;
         const authUser = req.auth;
-        const createPost = await postService.postService({
+        const createPost = await postService.createPost({
         title,
         image,
         body,
@@ -79,7 +79,7 @@
     }
     };
     const functionPost = {
-    postUser,
+    createPost,
     getAllPost,
     getOnePost,
     editPost,

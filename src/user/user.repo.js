@@ -12,7 +12,7 @@ const createUser = async ({ fullname, email, password }) => {
   });
 };
 
-const checkUser = async ({email}) =>{
+const checkUser = async (email) =>{
   return await User.findOne({
   where:{ email: email }
 })

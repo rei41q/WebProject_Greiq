@@ -8,8 +8,8 @@ POST http://localhost:8000/user/registration
 Content-Type: application/json
 
 {
-    "fullname": "greiq4",
-    "email": "greiq4@gmail.com",
+    "fullname": "greiq baru",
+    "email": "greiqbaru@gmail.com",
     "password": "12345678"
 }
 
@@ -19,7 +19,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiq4@gmail.com",
+    "email": "greiq2@gmail.com",
     "password": "12345678"
 }
 
@@ -29,7 +29,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4ODkxNzYsImV4cCI6MTY1OTk3NTU3Nn0.F3SrKD3yqiggrq03WQCGshQhmT8K_JnnYYG8i6O6P10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NjAwMzM0MTQsImV4cCI6MTY2MDExOTgxNH0.Nc64Xgwrmk878YBRvxM4_HpTI0M-M1-3jprXz5wW8Fo
 
 {
     "title": "Pantai Gatra",
@@ -46,12 +46,12 @@ GET http://localhost:8000/users
 GET http://localhost:8000/posts?writer=4
 
 ### API GET ONE POST | PUBLIC API
-GET http://localhost:8000/posts/7
+GET http://localhost:8000/posts/2
 
 ### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
 PUT  http://localhost:8000/posts/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4ODkxNzYsImV4cCI6MTY1OTk3NTU3Nn0.F3SrKD3yqiggrq03WQCGshQhmT8K_JnnYYG8i6O6P10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJncmVpcSBiYXJ1IiwiZW1haWwiOiJncmVpcWJhcnVAZ21haWwuY29tIiwiaWF0IjoxNjYwMDMzNDQ0LCJleHAiOjE2NjAxMTk4NDR9.g3c4Ovw86JM0cRXjGy3S_ArvgmBaKkQ1r63UIrAPoz0
 
 {
     "title": "Update Pantai Gatra",
@@ -62,10 +62,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hb
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
 PUT  http://localhost:8000/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4ODkxNzYsImV4cCI6MTY1OTk3NTU3Nn0.F3SrKD3yqiggrq03WQCGshQhmT8K_JnnYYG8i6O6P10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSAyIiwiZW1haWwiOiJncmVpcTJAZ21haWwuY29tIiwiaWF0IjoxNjYwMDM0MDQ1LCJleHAiOjE2NjAxMjA0NDV9.n998VHsN0H6O264xhx8Ed4vv313v-RETSBDD9K2hvL8
 
 {
     "fullname" : "greiq2",
-    "email" : "greiq2@gmail.com",
+    "email" : "greiq@gmail.com",
     "password" : "123456"
 }

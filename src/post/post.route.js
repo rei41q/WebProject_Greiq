@@ -6,7 +6,7 @@ postRouter.use(express.json());
 
 // API CREATE POST
 
-postRouter.post("/posts", tokenVerification, (postController.postUser))
+postRouter.post("/posts", tokenVerification, (postController.createPost))
 
 // -------------------------------------------------------------#
 

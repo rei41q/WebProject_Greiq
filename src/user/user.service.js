@@ -29,17 +29,19 @@ const createUser = async ({ fullname, email, password }) => {
 };
 
 const editUser = async({  fullname, email, password, authUser}) =>{
-  const checkUser = await userRepo.checkUser({email});
-
+  const checkUser = await User.findOne({
+    where:{ email: email }
+  })
   if(!checkUser){
-    await userRepo.editUser({
-      fullname, email, password, authUser
+    console.log("masuk")
+      return await userRepo.editUser({
+      fullname, 
+      email, 
+      password, 
+      authUser
     })
-  return (updatesuccess);
   }
-  else return (errorMessage.emailExist);
-
-
+  else return errorMessage.emailExist;
 }
 const userService = {
   createUser,
