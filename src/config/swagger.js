@@ -5,7 +5,7 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "Blog App API Collection",
-      description: "Kelas binar FSW wave 23",
+      description: "Kelas binar FSW wave 23 Greiq",
       version: "1.0.0",
     },
     components: {

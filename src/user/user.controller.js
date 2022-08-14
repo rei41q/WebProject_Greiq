@@ -1,10 +1,17 @@
 const userService = require("./user.service");
+const { validationResult } = require("express-validator");
 
 const error500 = "Something went wrong. Please try again later";
-const updateSuccess = "Update successful";
+const emailExist = "This email is already being used, Please choose another email"
+const updatesuccess = "Update successful"
+const registrationsuccessful = "Congratulations! Your account has been created"
 
 const errorMessage = {
-error500,
+error500, emailExist
+};
+
+const succesMessage = {
+  updatesuccess,registrationsuccessful
 };
 
 const getAllUser = async (req,res) => {
@@ -15,15 +22,20 @@ const getAllUser = async (req,res) => {
 const editUser = async (req, res) => {
   try {
     const {fullname, email, password } = req.body;
-    const authUser = req.auth;
+    const { userId } = req.params;
 
-    await userService.editUser({
+    const getEditUserService = await userService.editUser({
       fullname,
       email,
       password,
-      authUser
+      userId
     })
-    return res.json(updateSuccess);
+    if (getEditUserService)
+    {  
+      return res.status(200).json({ message : succesMessage.updatesuccess});}
+
+    else 
+    return res.status(400).json( {message : errorMessage.emailExist});
 
   } catch (error) {
     return res.status(500).json({ message: errorMessage.error500});
@@ -32,17 +44,22 @@ const editUser = async (req, res) => {
 
 
 const createUser = async (req, res) => {
-  const { fullname, email, password } = req.body;
   try {
-    const recordUser = await userService.createUser({
+    const { fullname, email, password } = req.body;
+    console.log("masuk 1")
+    const createUserService = await userService.createUser({
       fullname,
       email,
       password,
     });
-    return res.json(recordUser);
+    console.log("masuk")
+    if (createUserService) return res.status(200).json({message : succesMessage.registrationsuccessful });
+   
+    else 
+    return res.status(400).json({message : errorMessage.emailExist});
+
   } catch (error) {
-    res.send(error);
-    // return res.status(500).json({ message: "Kesalahan server, silahkan coba lagi nanti" });
+    return res.status(500).json({ message : errorMessage.error500});
   }
 };
 

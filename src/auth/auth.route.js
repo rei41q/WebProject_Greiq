@@ -13,7 +13,7 @@ const { validate } = require("../middleware/validation");
  *  post:
  *    tags: 
  *      - authorization
- *    summary: API login
+ *    summary: API login (PUBLIC & VALIDATION)
  *    description: Api ini digunakan untuk login
  *    requestBody:
  *      required: true
@@ -24,13 +24,13 @@ const { validate } = require("../middleware/validation");
  *            properties:
  *              email:
  *                type: string
- *                example: contoh@gmail.com
+ *                example: greiq@gmail.com
  *              password:
  *                type: string
- *                example: Password@123!
+ *                example: 123456&Qz
  *    responses:
  *      '200':
- *        description: Login sukses
+ *        description: login successful
  *        content:
  *          application/json:
  *            schema:
@@ -40,7 +40,7 @@ const { validate } = require("../middleware/validation");
  *                  type: string
  *                  example: aiuwhrp2h3p48uy24184auewfpa8y34pr8ujrp8u2394p812ejuapwf823r89q23y[293u4[23u4ihr9283y4q02783ywfjaidhjfoaw]]
  *      '400':
- *        description: Login gagal
+ *        description: Login failed
  */
 authRouter.post("/auth/login", loginValidation, validate,async (req, res) => {
   const { email, password } = req.body;
@@ -51,6 +51,7 @@ authRouter.post("/auth/login", loginValidation, validate,async (req, res) => {
 
   //   kalau ada cek password
   const isPasswordCorrect = await bcrypt.compare(password, existUser.password);
+
   if (isPasswordCorrect) {
     // generate jwt token
     const token = await jwt.sign(

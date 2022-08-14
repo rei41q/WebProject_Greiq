@@ -21,7 +21,8 @@
     "sequelize": "^6.21.3",
     "swagger-client": "^3.18.5",
     "swagger-jsdoc": "^6.2.5",
-    "swagger-ui-express": "^4.5.0"
+    "swagger-ui-express": "^4.5.0",
+    "validate": "^5.2.0"
   },
   "devDependencies": {
     "sequelize-cli": "^6.4.1"

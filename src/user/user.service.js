@@ -1,13 +1,7 @@
 const bcrypt = require("bcrypt");
 const userRepo = require("./user.repo");
-const { User } = require("../database/models")
 
-const emailExist = "This email is already being used, Please choose another email"
-const updatesuccess = "Update successful"
-const registrationsuccessful = "Congratulations! Your account has been created"
-const errorMessage = { 
-  emailExist
-}
+
 const getAllUser = async () => {
    const getAllUserinRepo = await userRepo.getAllUser();
    return getAllUserinRepo;
@@ -17,31 +11,37 @@ const getAllUser = async () => {
 const createUser = async ({ fullname, email, password }) => {
   const hashPassword = await bcrypt.hash(password, 10);
 
-  const checkUser = await User.findOne({
-    where:{ email: email }
-  })
+  const checkEmailUser = await userRepo.checkEmailAllUser(email);
 
-  if(!checkUser){
-  await userRepo.createUser({ fullname, email, password: hashPassword });
-  return registrationsuccessful
+  if(!checkEmailUser){
+  const getUserRepo = await userRepo.createUser({ fullname, email, password: hashPassword });
+  return getUserRepo;
   }
-  else return errorMessage.emailExist
+  else return null;
 };
 
-const editUser = async({  fullname, email, password, authUser}) =>{
-  const checkUser = await User.findOne({
-    where:{ email: email }
-  })
-  if(!checkUser){
-    console.log("masuk")
-      return await userRepo.editUser({
+const editUser = async({  fullname, email, password, userId}) =>{
+
+  const hashedPassword = await bcrypt.hash(password, saltRound)
+
+  //JIKA EMAIL SAMA DENGAN EMAIL USER INI, TAPI HANYA MAU UPDATE FULL NAMENYA
+  const checkSameEmail =  await userRepo.checkSameEmail(email); 
+  //------------------------------------------------------------------//
+
+  //CEK EMAIL YANG INGIN DIUPDATE ADA ATAU ENGGA DALAM TABEL USERS
+
+  const checkEmailAllUser = await userRepo.checkEmailAllUser(email);
+
+  if(!checkEmailAllUser && !checkSameEmail){
+      const getUserRepo = await userRepo.editUser({
       fullname, 
       email, 
-      password, 
-      authUser
+      password : hashedPassword, 
+      userId
     })
+    return getUserRepo;
   }
-  else return errorMessage.emailExist;
+  else return null;
 }
 const userService = {
   createUser,

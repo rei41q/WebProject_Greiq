@@ -1,7 +1,7 @@
 const express = require("express");
 const { checkSchema } = require("express-validator");
 const tokenVerification = require("../middleware/token.verification");
-const { registrationValidationObject } = require("../middleware/user.validation");
+const { registrationValidationObject, getOneUserValidation } = require("../middleware/user.validation")
 const { validate } = require("../middleware/validation");
 const userRouter = express.Router();
 
@@ -14,7 +14,7 @@ const userController = require("./user.controller");
  *  get:
  *    tags:
  *      - user
- *    summary: API untuk get user
+ *    summary: API Get All User (PUBLIC)
  *    responses:
  *      '200':
  *        content:
@@ -41,13 +41,14 @@ const userController = require("./user.controller");
 
 userRouter.get("/users", userController.getAllUser)
 
+// API USER REGISTRATION
 /**
  * @swagger
  * /user/registration:
  *  post:
  *    tags:
  *      - user
- *    summary: API untuk registrasi user
+ *    summary: API User Registration (PUBLIC & VALIDATION)
  *    requestBody:
  *      required: true
  *      content:
@@ -57,13 +58,13 @@ userRouter.get("/users", userController.getAllUser)
  *            properties:
  *              fullname:
  *                type: string
- *                example: Full Name
+ *                example: Greiq Imapuly
  *              email:
  *                type: string
- *                example: yourname@gmail.com
+ *                example: greiq@gmail.com
  *              password:
  *                type: string
- *                example: the password must be at least 8 characters with one uppercase one lowercase and one number
+ *                example: 123456&Qz
  *    responses:
  *      '200':
  *        content:
@@ -83,6 +84,7 @@ userRouter.get("/users", userController.getAllUser)
  *                  type: string
  *                createdAt:
  *                  type: string
+ *     
  */
   
 
@@ -90,6 +92,8 @@ userRouter.get("/users", userController.getAllUser)
 
 userRouter.post("/user/registration",checkSchema(registrationValidationObject),
 validate, userController.createUser);
+
+// API EDIT USER 
 
 /**
  * @swagger
@@ -99,11 +103,11 @@ validate, userController.createUser);
  *      - bearerAuth : []
  *    tags:
  *      - user
- *    summary: API untuk edit user
+ *    summary: API Edit User (PRIVATE & VALIDATION)
  *    parameters:
  *      - in: path
  *        name: userId
- *        required: true
+ *        value : 1
  *    requestBody:
  *      required: true
  *      content:
@@ -125,27 +129,12 @@ validate, userController.createUser);
  *        description: Edit data sukses
  */
 
-// API EDIT USER
 
-userRouter.put("/user", tokenVerification, userController.editUser)
+userRouter.put("/user/:userId",checkSchema(registrationValidationObject),
+validate, tokenVerification, userController.editUser)
 
 //---------------------------------------------------------------------#
 
-// contoh penggunaan jwt data yang sudah tervalidasi
-// adlaah api untuk create post
-// userRouter.post("/posts", tokenVerification, (req, res) => {
-//   const { title, image, body } = req.body;
-//   const authUser = req.auth;
-
-//   const newPost = {
-//     title,
-//     image,
-//     body,
-//     user_id: authUser.id,
-//   };
-
-//   return res.json(newPost);
-// });
 
 
 module.exports = userRouter;

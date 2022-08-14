@@ -1,5 +1,9 @@
 
 
+### API SWAGGER
+
+GET http://localhost:8000/api-docs
+
 ### API CREATE A NEW USER | JIKA EMAIL SUDAH TERDAFTAR SEBELUMNYA, MAKA PENDAFTARAN GAGAL
 
 ### KET : PASSWORD AKAN DI AMANKAN DALAM BENTUK BCRYPT 
@@ -8,9 +12,9 @@ POST http://localhost:8000/user/registration
 Content-Type: application/json
 
 {
-    "fullname": "greiq baru",
-    "email": "greiqbaru@gmail.com",
-    "password": "12345678"
+    "fullname": "greiq",
+    "email": "greq@gmail.com",
+    "password": "123456&Qz"
 }
 
 
@@ -19,8 +23,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiq2@gmail.com",
-    "password": "12345678"
+    "password": "11"
 }
 
 ### API CREATE A NEW POST - 
@@ -29,32 +32,51 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcTQiLCJlbWFpbCI6ImdyZWlxNEBnbWFpbC5jb20iLCJpYXQiOjE2NjAwMzM0MTQsImV4cCI6MTY2MDExOTgxNH0.Nc64Xgwrmk878YBRvxM4_HpTI0M-M1-3jprXz5wW8Fo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImZ1bGxuYW1lIjoiZ3JlaXEyIiwiZW1haWwiOiJncmVpcTJAZ21haWwuY29tIiwiaWF0IjoxNjYwMjg0ODYwLCJleHAiOjE2NjAzNzEyNjB9.-RZEsgWhTIVwOQgcGS1sw8kw1vGP_6YgzXNPWXWwMLE
 
 {
-    "title": "Pantai Gatra",
+    "title": "Pantai Gatra greiq 2",
     "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
     "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
 }
 
-### API GET ALL USER | PUBLIC API
+### API GET ALL USER | PUBLIC API (EXAMPLE)
 
 GET http://localhost:8000/users
 
-### API GET ALL POST/ByWRITER | PUBLIC API
+### API GET ALL POST| PUBLIC API
 
-GET http://localhost:8000/posts?writer=4
+GET http://localhost:8000/posts
+
+### API GET POST WITH PAGINATE
+
+GET http://localhost:8000/posts?pageNumber=1
+
+### API GET POST ByWRITER | PUBLIC API
+
+GET http://localhost:8000/posts?writerId=30
+
+### API GET POST SORT | PUBLIC API
+
+GET http://localhost:8000/posts?sortOption=DESC
+
+
+### API GET POST With Search | PUBLIC API
+
+GET http://localhost:8000/posts?searchPostTitle=Pantai
+
+
 
 ### API GET ONE POST | PUBLIC API
-GET http://localhost:8000/posts/2
+GET http://localhost:8000/posts/11
 
 ### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/posts/1
+PUT  http://localhost:8000/posts/0
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hbWUiOiJncmVpcSBiYXJ1IiwiZW1haWwiOiJncmVpcWJhcnVAZ21haWwuY29tIiwiaWF0IjoxNjYwMDMzNDQ0LCJleHAiOjE2NjAxMTk4NDR9.g3c4Ovw86JM0cRXjGy3S_ArvgmBaKkQ1r63UIrAPoz0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZnVsbG5hbWUiOiJncmVpcSBiYXJ1IiwiZW1haWwiOiJncmVpcXp6ekBnbWFpbC5jb20iLCJpYXQiOjE2NjAyODMxNDQsImV4cCI6MTY2MDM2OTU0NH0.R-nkuuJKTPEGsbVQldUxNdfit_H3YGvES_fDfw8mc50
 
 {
-    "title": "Update Pantai Gatra",
+    "title": "Update Pantai Gatra 10",
     "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
     "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
 }
@@ -62,10 +84,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZnVsbG5hb
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
 PUT  http://localhost:8000/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSAyIiwiZW1haWwiOiJncmVpcTJAZ21haWwuY29tIiwiaWF0IjoxNjYwMDM0MDQ1LCJleHAiOjE2NjAxMjA0NDV9.n998VHsN0H6O264xhx8Ed4vv313v-RETSBDD9K2hvL8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZXFAZ21haWwuY29tIiwiaWF0IjoxNjYwMzAyOTIwLCJleHAiOjE2NjAzODkzMjB9.uZQj1OYHF2Iwlq7QbonrIem-Vv2rf3Mb1IPGIBzc7S8
 
 {
     "fullname" : "greiq2",
-    "email" : "greiq@gmail.com",
-    "password" : "123456"
+    "email" : "bbzzb1111bbzzbbbzzzzqqacccc@gmail.com",
+    "password" : "123456@12A"
 }
