@@ -62,7 +62,10 @@ const getAllPostOrByWriter = async (req, res) => {
     } 
         
     else {
-        //JIKA USER TIDAK MEMILIH WRITER ID, MAKA AKAN MASUK PADA GET ALL POST, GET ALL POST MEMILIK 3 FITUR
+        //JIKA USER TIDAK MEMILIH WRITER ID, MAKA AKAN MASUK PADA GET ALL POST, 
+        
+        //GET ALL POST MEMILIK 3 FITUR
+        
         if(searchPostTitle || sortOption || pageNumber){
         const getAllPostWithFeatures = await postService.getAllPostWithFeatures({
           searchPostTitle,
