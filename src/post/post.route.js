@@ -193,7 +193,7 @@ postRouter.put("/posts/:postId", tokenVerification, createPostsValidation, valid
  *            properties:
  *              title:
  *                type: string
- *                example: pantai gatra
+ *                example: update pantai gatra
  *              image:
  *                image: string
  *                example: https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg

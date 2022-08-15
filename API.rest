@@ -36,7 +36,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
 
 {
-    "title": "Pantai",
+    "title": "pantai",
     "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
     "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
 }
@@ -95,7 +95,7 @@ GET http://localhost:8000/posts?writerId=1&sortOption=ASC&pageNumber=1
 
 GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura&sortOption=ASC
 
-### API GET POST  BY WRITER ,SORT, PAGINATE AND SEARCH
+### API GET POST BY WRITER ,SORT, PAGINATE AND SEARCH
 
 GET http://localhost:8000/posts?writerId=15&searchPostTitle=naruto&sortOption=ASC&pageNumber=1
 
@@ -109,7 +109,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
 
 {
-    "title": "Update Pantai Gatra 10",
+    "title": "update pantai gatra 10",
     "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
     "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
 }
