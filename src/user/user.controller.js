@@ -23,16 +23,20 @@ const editUser = async (req, res) => {
   try {
     const {fullname, email, password } = req.body;
     const { userId } = req.params;
+    const  authUser  = req.auth;
 
     const getEditUserService = await userService.editUser({
       fullname,
       email,
       password,
-      userId
+      userId,
+      authEmail : authUser.email
     })
     if (getEditUserService)
-    {  
-      return res.status(200).json({ message : succesMessage.updatesuccess});}
+    {
+      authUser.email = authEmail;
+      return res.status(200).json({ message : succesMessage.updatesuccess});
+    }
 
     else 
     return res.status(400).json( {message : errorMessage.emailExist});

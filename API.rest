@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "fullname": "greiq",
-    "email": "greq@gmail.com",
+    "email": "greq3@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -23,7 +23,8 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "password": "11"
+    "email": "greq@gmail.com",
+    "password": "123456&Qz"
 }
 
 ### API CREATE A NEW POST - 
