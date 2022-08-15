@@ -1,10 +1,12 @@
 const postService = require("./post.service");
 const error500 = "Something went wrong. Please try again later";
-const error400 = "Post Not Found";
+const error406 = "Post Not Found";
+const error412 = "Writer ID doesn't exist";
 
 const errorMessage = {
   error500,
-  error400,
+  error406,
+  error412,
 };
 
 const createPost = async (req, res) => {
@@ -46,13 +48,13 @@ const getAllPostOrByWriter = async (req, res) => {
           pageNumber,
         });
 
-        if(resultPostbyWriter!="")  //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA PADA POST 
+        if(resultPostbyWriter!="")  //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT
         return res.status(200).json(resultPostbyWriter); 
-        else return res.status(400).json({ message: errorMessage.error400 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 400 (POST NOT FOUND) 
+        else return res.status(400).json({ message: errorMessage.error406 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 406 (POST NOT FOUND) 
       }
 
-      //JIKA TIDAK ADA POST OLEH ID PENULIS INI, RETURN POST NOT FOUND, ERROR STATUS (400)
-      else return res.status(400).json({ message: errorMessage.error400 });
+      //JIKA TIDAK ADA ID PENULIS INI, RETURN Writer ID doesn't exist
+      else return res.status(412).json({ message: errorMessage.error412 });
     } 
         
     else {
@@ -66,7 +68,7 @@ const getAllPostOrByWriter = async (req, res) => {
           if (getAllPost !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
             return res.status(200).json(resultAllPostWithFeatures);
           } else { //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
-            return res.status(400).json({ message: errorMessage.error400 });
+            return res.status(406).json({ message: errorMessage.error406 });
           }
         }
         else{
@@ -76,7 +78,7 @@ const getAllPostOrByWriter = async (req, res) => {
               if (getAllPost !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
                 return res.status(200).json(getAllPost);
               } else {  //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
-                return res.status(400).json({ message: errorMessage.error400 });
+                return res.status(406).json({ message: errorMessage.error406 });
               }
             }
       }
@@ -99,7 +101,7 @@ const getDetailPost = async (req, res) => {
 
     }
      
-    else return res.status(400).json(errorMessage.error400);
+    else return res.status(406).json(errorMessage.error406);
 
   } catch (error) {
     return res.status(500).json({ message: errorMessage.error500 });

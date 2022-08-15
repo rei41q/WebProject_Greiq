@@ -86,11 +86,11 @@ GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura
 
 ### API GET POST WITH PAGINATE
 
-GET http://localhost:8000/posts?writerId=15&sortOption=ASC&pageNumber=1
+GET http://localhost:8000/posts?writerId=1&sortOption=ASC&pageNumber=1
 
 ### API GET POST WITH PAGINATE
 
-GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura&sortOption=ASC
+GET http://localhost:8000/posts?writerId=1&searchPostTitle=sakura&sortOption=ASC
 
 ### API GET POST WITH PAGINATE
 

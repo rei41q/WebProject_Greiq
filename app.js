@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require('express');
 const authRouter = require("./src/auth/auth.route");
-const tokenVerification = require("./src/middleware/token.verification");
 const userRouter = require("./src/user/user.route");
 const postRouter = require("./src/post/post.route");
 const swaggerUi = require("swagger-ui-express");

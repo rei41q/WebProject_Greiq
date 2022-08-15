@@ -2,7 +2,6 @@ const express = require('express');
 const postRouter = express.Router();
 const tokenVerification = require('../middleware/token.verification');
 const postController = require("./post.controller");
-const { checkSchema } = require("express-validator");
 const { getPostsValidation, getOnePostValidation } = require("../middleware/post.validation")
 const { validate } = require("../middleware/validation");
 
@@ -67,7 +66,7 @@ postRouter.post("/posts", tokenVerification, (postController.createPost))
 
 // API GET ALL POST / By Writer
 
-postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPost));
+postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPostOrByWriter));
 
 /**
  * @swagger
