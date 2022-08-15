@@ -73,13 +73,28 @@ GET http://localhost:8000/posts?searchPostTitle=sakura&sortOption=ASC
 
 GET http://localhost:8000/posts?searchPostTitle=naruto&sortOption=ASC&pageNumber=1
 
-### API GET POST ByWRITER | PUBLIC API
+### API GET POST BY WRITER 
+GET http://localhost:8000/posts?writerId=15&pageNumber=1
+
+### API GET POST SORT | PUBLIC API
+
+GET http://localhost:8000/posts??writerId=15&sortOption=ASC
+
+### API GET POST With Search | PUBLIC API
 
 GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura
 
-### API GET POST ByWRITER | PUBLIC API
+### API GET POST WITH PAGINATE
 
-GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura&pageNumber=1
+GET http://localhost:8000/posts?writerId=15&sortOption=ASC&pageNumber=1
+
+### API GET POST WITH PAGINATE
+
+GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura&sortOption=ASC
+
+### API GET POST WITH PAGINATE
+
+GET http://localhost:8000/posts?writerId=15&searchPostTitle=naruto&sortOption=ASC&pageNumber=1
 
 
 ### API GET ONE POST | PUBLIC API
