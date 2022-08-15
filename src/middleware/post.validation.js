@@ -23,7 +23,7 @@ const getPostsValidation = [
 
     body("image").isString(),
 
-    body("body").isString()
+    body("body").isString().isLength({ min: 1 , max: 500})
 ];
 
   
