@@ -120,14 +120,13 @@ const editPost = async (req, res) => {
 
     const  authUserId = authUser.id;
 
-    console.log("masuk 1")
+
     const checkpostId = await postService.checkOnePost({postId});
 
     const checkAuthId = await postService.checkAuthId({postId, authUserId});
-    console.log("check aut",checkAuthId)
-    console.log("masuk 22")
+
     if (checkpostId && checkAuthId) {
-        console.log("masuk 333")
+
     const resultEditPost = await postService.editPost({
       title,
       image,

@@ -70,7 +70,7 @@ const editPost = async ({ title, image, body, authUserId, postId}) => {
 };
 
 const checkAuthId = async ({postId, authUserId}) =>{
-    console.log("masuk service")
+
     return await postRepo.checkAuthId({postId,authUserId})
 }
 

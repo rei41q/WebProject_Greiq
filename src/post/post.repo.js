@@ -26,19 +26,18 @@ const e = require("express");
         //     //DEFAULT PageNumber (Halaman 1)
         //     pageNumber = 1;
         // }
-        console.log("masuk awal")
+
         if (sortOption || pageNumber || searchPsostTitle) {
-            console.log("masuk awal 2")
+
             if (sortOption && !pageNumber && !searchPostTitle) {
-                console.log("masuk not page number")
+
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
             });
           
             } 
             else if(sortOption && pageNumber && !searchPostTitle){
-                console.log("masuk page number lala")
-                console.log(orderBy, sortOption)
+
                 return await Post.findAll({
                     order: [[orderBy, sortOption]],
         
@@ -47,7 +46,7 @@ const e = require("express");
                 })
             }
             else if (sortOption && !pageNumber && searchPostTitle) {
-                console.log("masuk searchPostTitle writer")
+
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
@@ -60,7 +59,7 @@ const e = require("express");
             });
             }
             else if (sortOption && pageNumber && searchPostTitle) {
-                console.log("masuk searchPostTitle writer")
+  
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
@@ -106,11 +105,11 @@ const e = require("express");
     //     //DEFAULT PageNumber (Halaman 1)
     //     pageNumber = 1;
     // }
-    console.log("masuk awal")
+
     if (writerId || sortOption || pageNumber || searchPsostTitle) {
-        console.log("masuk awal 2")
+
         if (writerId && sortOption && !pageNumber && !searchPostTitle) {
-            console.log("masuk not page number")
+
         return await Post.findAll({
             order: [[orderBy, sortOption]],
 
@@ -123,7 +122,7 @@ const e = require("express");
       
         } 
         else if(writerId && sortOption && pageNumber && !searchPostTitle){
-            console.log("masuk page number")
+
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
@@ -138,7 +137,7 @@ const e = require("express");
             })
         }
         else if (writerId && sortOption && !pageNumber && searchPostTitle) {
-            console.log("masuk searchPostTitle writer")
+
         return await Post.findAll({
             order: [[orderBy, sortOption]],
 
@@ -152,7 +151,7 @@ const e = require("express");
         });
         }
         else if (writerId && sortOption && pageNumber && searchPostTitle) {
-            console.log("masuk searchPostTitle writer")
+
         return await Post.findAll({
             order: [[orderBy, sortOption]],
 
@@ -171,7 +170,7 @@ const e = require("express");
     } 
     };
     const checkAuthId = async ({postId, authUserId}) =>{
-        console.log("masuk repo")
+
         return await Post.findOne({
             where:{
                 id : postId,
@@ -182,7 +181,7 @@ const e = require("express");
     }
 
     const editPost = async ({ title, image, body, authUserId, postId}) => {
-        console.log("masuk edit post")
+
     return await Post.update(
         {
         title: title,
@@ -206,7 +205,7 @@ const e = require("express");
     };
 
     const checkOnePost = async ({postId}) =>{
-        console.log("masuk 3")
+
         return await Post.findOne({
             where: {
                 id : postId,

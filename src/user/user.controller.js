@@ -30,7 +30,6 @@ const editUser = async (req, res) => {
     const  authUserId = authUser.id;
     const  authUserEmail = authUser.email;
 
-    console.log("auth email", authUserEmail)
     const getEditUserService = await userService.editUser({
       fullname,
       email,
@@ -58,13 +57,13 @@ const editUser = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const { fullname, email, password } = req.body;
-    console.log("masuk 1")
+
     const createUserService = await userService.createUser({
       fullname,
       email,
       password,
     });
-    console.log("masuk")
+
     if (createUserService) return res.status(200).json({message : succesMessage.registrationsuccessful });
    
     else 
