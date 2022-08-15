@@ -50,35 +50,36 @@ const getAllPost = async (req, res) => {
 
       //JIKA TIDAK ADA POST, RETURN POST NOT FOUND, ERROR STATUS (400)
       else return res.status(400).json({ message: errorMessage.error400 });
-    } else {
-      if (pageNumber) {
-
-        //get Posts berdasarkan PageNumber
-        const getPostsWithPageNumber = await postService.getPostsWithPageNumber(
-          {
-            searchPostTitle,
-            sortOption,
-            pageNumber,
-          }
-        );
-
-        return res.status(200).json(getPostsWithPageNumber);
-      } 
-        else {
+    } 
+        
+    else {
         //JIKA User tidak memilih pageNumber maka akan menghasilkan semua data post
-        const getAllPost = await postService.getAllPost({
+        if(searchPostTitle || sortOption || pageNumber){
+            console.log("masuk")
+        const getAllPost = await postService.getAllPostWithFeatures({
           searchPostTitle,
           sortOption,
+          pageNumber
         });
-
-        if (getAllPost !="") {
-          return res.status(200).json(getAllPost);
-        } else {
-          return res.status(400).json({ message: errorMessage.error400 });
+          if (getAllPost !="") {
+            return res.status(200).json(getAllPost);
+          } else {
+            return res.status(400).json({ message: errorMessage.error400 });
+          }
         }
+        else{
+            const getAllPost = await postService.getAllPost();
+              if (getAllPost !="") {
+                return res.status(200).json(getAllPost);
+              } else {
+                return res.status(400).json({ message: errorMessage.error400 });
+              }
+            }
+
+        
       }
     }
-  } catch (error) {
+   catch (error) {
     return res.status(500).json({ message: errorMessage.error500 });
   }
 };

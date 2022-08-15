@@ -53,19 +53,33 @@ GET http://localhost:8000/posts
 
 GET http://localhost:8000/posts?pageNumber=1
 
-### API GET POST ByWRITER | PUBLIC API
-
-GET http://localhost:8000/posts?writerId=30
-
 ### API GET POST SORT | PUBLIC API
 
-GET http://localhost:8000/posts?sortOption=DESC
-
+GET http://localhost:8000/posts?sortOption=ASC
 
 ### API GET POST With Search | PUBLIC API
 
-GET http://localhost:8000/posts?searchPostTitle=Pantai
+GET http://localhost:8000/posts?searchPostTitle=sakura
 
+### API GET POST WITH PAGINATE
+
+GET http://localhost:8000/posts?sortOption=ASC&pageNumber=1
+
+### API GET POST WITH PAGINATE
+
+GET http://localhost:8000/posts?searchPostTitle=sakura&sortOption=ASC
+
+### API GET POST WITH PAGINATE
+
+GET http://localhost:8000/posts?searchPostTitle=naruto&sortOption=ASC&pageNumber=1
+
+### API GET POST ByWRITER | PUBLIC API
+
+GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura
+
+### API GET POST ByWRITER | PUBLIC API
+
+GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura&pageNumber=1
 
 
 ### API GET ONE POST | PUBLIC API

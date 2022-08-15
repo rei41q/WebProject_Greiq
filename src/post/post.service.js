@@ -25,14 +25,20 @@ const getPostsWithPageNumber = async ({
   });
 };
 
-const getAllPost = async ({
+const getAllPostWithFeatures = async ({
     searchPostTitle,
     sortOption,
+    pageNumber
   }) => {
-    return await postRepo.getAllPost({
+    return await postRepo.getAllPostWithFeatures({
       searchPostTitle,
       sortOption,
+      pageNumber
     });
+  };
+
+  const getAllPost = async () => {
+    return await postRepo.getAllPost();
   };
 
 const getDetailPost = async (postId) => {
@@ -73,7 +79,7 @@ const FunctionPostService = {
   editPost,
   getPostbyWriter,
   checkWriterId,
-  getPostsWithPageNumber
+  getAllPostWithFeatures
 };
 
 module.exports = FunctionPostService;
