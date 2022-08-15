@@ -58,28 +58,36 @@ const getPostbyWriter = async ({
   });
 };
 
-const editPost = async ({ title, image, body, postId }) => {
-  const checkpostId = await postRepo.getOnePost(postId);
-  if (checkpostId) {
+const editPost = async ({ title, image, body, authUserId, postId}) => {
+
     return await postRepo.editPost({
       title,
       image,
       body,
+      authUserId,
       postId,
     });
-  } else {
-    return null;
-  }
 };
+
+const checkAuthId = async ({postId, authUserId}) =>{
+    console.log("masuk service")
+    return await postRepo.checkAuthId({postId,authUserId})
+}
+
+const checkOnePost= async ({postId}) => {
+    return await postRepo.checkOnePost({postId})
+}
 
 const FunctionPostService = {
   createPost,
   getAllPost,
   getDetailPost,
   editPost,
+  checkOnePost,
   getPostbyWriter,
   checkWriterId,
-  getAllPostWithFeatures
+  getAllPostWithFeatures,
+  checkAuthId
 };
 
 module.exports = FunctionPostService;

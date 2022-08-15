@@ -1,15 +1,14 @@
-const { request } = require("express");
-const { query } = require("express-validator");
+const { query, body } = require("express-validator");
 const { param } = require('express-validator');
 
 const getPostsValidation = [
 
-    query("writerId").isNumeric().isLength({ min: 1}).withMessage('Input Numbers').optional({ nullable: true }),
+    query("writerId").isNumeric().withMessage('Input Numbers').isLength({ min: 1}).optional({ nullable: true }),
 
     query("sortOption").isString().withMessage(' ASC/DESC ').
     isIn(['ASC', 'DESC']).withMessage('Input ASC or DESC').optional({ nullable: true }),
     
-    query("pageNumber").isNumeric().isLength({ min: 1}).optional({ nullable: true }),
+    query("pageNumber").isNumeric().withMessage('Input Numbers').isLength({ min: 1}).optional({ nullable: true }),
  
     query("searchPostTitle").isString().optional({ nullable: true }),
 ];
@@ -18,10 +17,19 @@ const getPostsValidation = [
     param("postId").isInt()
   ];
   
+  const createPostsValidation = [
+
+    body("title").isString().isLength({ min: 1 , max: 70}),
+
+    body("image").isString(),
+
+    body("body").isString()
+];
 
   
 module.exports = {
     getPostsValidation,
-    getOnePostValidation
+    getOnePostValidation,
+    createPostsValidation
   };
   

@@ -2,14 +2,14 @@ const express = require('express');
 const postRouter = express.Router();
 const tokenVerification = require('../middleware/token.verification');
 const postController = require("./post.controller");
-const { getPostsValidation, getOnePostValidation } = require("../middleware/post.validation")
+const { getPostsValidation, getOnePostValidation, createPostsValidation } = require("../middleware/post.validation")
 const { validate } = require("../middleware/validation");
 
 postRouter.use(express.json());
 
 // API CREATE POST
 
-postRouter.post("/posts", tokenVerification, (postController.createPost))
+postRouter.post("/posts", tokenVerification, createPostsValidation, validate, (postController.createPost))
 
 /**
  * @swagger
@@ -30,7 +30,7 @@ postRouter.post("/posts", tokenVerification, (postController.createPost))
  *            properties:
  *              title:
  *                type: string
- *                example: Update Pantai Gatra 10
+ *                example: pantai gatra 10
  *              image:
  *                image: string
  *                example: https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg
@@ -166,6 +166,67 @@ postRouter.get("/posts/:postId", getOnePostValidation, validate, (postController
 
 //---------------------------------------------------------------------#
 
-postRouter.put("/posts/:postId", tokenVerification, (postController.editPost))
+// API EDIT POST
+
+postRouter.put("/posts/:postId", tokenVerification, createPostsValidation, validate, (postController.editPost))
+
+/**
+ * @swagger
+ * /posts/{postId}:
+ *  put:
+ *    security:
+ *      - bearerAuth : []
+ *    tags:
+ *      - post
+ *    summary: API Edit Post (PRIVATE & VALIDATION)
+ *    description: API Edit Post
+ *    parameters:
+ *      - in: path
+ *        name: postId
+ *        value : 1
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              title:
+ *                type: string
+ *                example: pantai gatra
+ *              image:
+ *                image: string
+ *                example: https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg
+ *              body:
+ *                type: string
+ *                example: Pantai Gatra merupakan salah satu pantai terindah di Indonesia
+ *    responses:
+ *      '200':
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                id:
+ *                  type: string
+ *                title:
+ *                  type: string
+ *                image:
+ *                  type: string
+ *                body:
+ *                  type: string
+ *                userId:
+ *                  type: string
+ *                updatedAt:
+ *                  type: string
+ *                createdAt:
+ *                  type: string
+ *     
+ */
+
+
+
+// -------------------------------------------------------------#
+
 
 module.exports = postRouter;

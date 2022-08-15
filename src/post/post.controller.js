@@ -2,11 +2,13 @@ const postService = require("./post.service");
 const error500 = "Something went wrong. Please try again later";
 const error406 = "Post Not Found";
 const error412 = "Writer ID doesn't exist";
-
+const error401 = "Authorization failed" 
+const updatesuccess = "Update successful"
 const errorMessage = {
   error500,
   error406,
   error412,
+  error401,
 };
 
 const createPost = async (req, res) => {
@@ -111,17 +113,36 @@ const getDetailPost = async (req, res) => {
 const editPost = async (req, res) => {
   try {
     const { postId } = req.params;
-
+    
     const { title, image, body } = req.body;
+    
+    const  authUser  = req.auth;
 
-    const updatePost = await postService.editPost({
+    const  authUserId = authUser.id;
+
+    console.log("masuk 1")
+    const checkpostId = await postService.checkOnePost({postId});
+
+    const checkAuthId = await postService.checkAuthId({postId, authUserId});
+    console.log("check aut",checkAuthId)
+    console.log("masuk 22")
+    if (checkpostId && checkAuthId) {
+        console.log("masuk 333")
+    const resultEditPost = await postService.editPost({
       title,
       image,
       body,
+      authUserId,
       postId,
     });
-
-    return res.json({ message: updatePost });
+    if(resultEditPost) return res.status(200).send({ message: updatesuccess });
+    
+    else return res.status(406).send({ message: errorMessage.error406 });
+    }
+    else if(!checkAuthId){
+        return res.status(406).send({ message: errorMessage.error401 });
+    }
+    
   } catch (error) {
     return res.status(500).send({ message: errorMessage.error500 });
   }

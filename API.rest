@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "fullname": "greiq",
-    "email": "greq3@gmail.com",
+    "email": "greiqbaru@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -23,7 +23,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greq@gmail.com",
+    "email": "greiqbaru@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,10 +33,10 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImZ1bGxuYW1lIjoiZ3JlaXEyIiwiZW1haWwiOiJncmVpcTJAZ21haWwuY29tIiwiaWF0IjoxNjYwMjg0ODYwLCJleHAiOjE2NjAzNzEyNjB9.-RZEsgWhTIVwOQgcGS1sw8kw1vGP_6YgzXNPWXWwMLE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
 
 {
-    "title": "Pantai Gatra greiq 2",
+    "title": "Pantai",
     "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
     "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
 }
@@ -104,9 +104,9 @@ GET http://localhost:8000/posts?writerId=15&searchPostTitle=naruto&sortOption=AS
 GET http://localhost:8000/posts/11
 
 ### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/posts/0
+PUT  http://localhost:8000/posts/77
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZnVsbG5hbWUiOiJncmVpcSBiYXJ1IiwiZW1haWwiOiJncmVpcXp6ekBnbWFpbC5jb20iLCJpYXQiOjE2NjAyODMxNDQsImV4cCI6MTY2MDM2OTU0NH0.R-nkuuJKTPEGsbVQldUxNdfit_H3YGvES_fDfw8mc50
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
 
 {
     "title": "Update Pantai Gatra 10",
@@ -115,12 +115,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZnVsbG5hb
 }
 
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/user
+PUT  http://localhost:8000/user/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZXFAZ21haWwuY29tIiwiaWF0IjoxNjYwMzAyOTIwLCJleHAiOjE2NjAzODkzMjB9.uZQj1OYHF2Iwlq7QbonrIem-Vv2rf3Mb1IPGIBzc7S8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
 
 {
     "fullname" : "greiq2",
-    "email" : "bbzzb1111bbzzbbbzzzzqqacccc@gmail.com",
-    "password" : "123456@12A"
+    "email" : "lala@gmail.com",
+    "password" : "123456@12Aa"
 }

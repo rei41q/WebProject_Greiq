@@ -170,8 +170,19 @@ const e = require("express");
         }
     } 
     };
+    const checkAuthId = async ({postId, authUserId}) =>{
+        console.log("masuk repo")
+        return await Post.findOne({
+            where:{
+                id : postId,
+                userId : authUserId
+            }
+        })
 
-    const editPost = async ({ title, image, body, postId }) => {
+    }
+
+    const editPost = async ({ title, image, body, authUserId, postId}) => {
+        console.log("masuk edit post")
     return await Post.update(
         {
         title: title,
@@ -181,6 +192,7 @@ const e = require("express");
         {
         where: {
             id: postId,
+            userId : authUserId
         },
         }
     );
@@ -193,6 +205,14 @@ const e = require("express");
     });
     };
 
+    const checkOnePost = async ({postId}) =>{
+        console.log("masuk 3")
+        return await Post.findOne({
+            where: {
+                id : postId,
+            },
+        })
+    }
     const functionPostRepo = {
     createPost,
     getAllPost,
@@ -200,7 +220,9 @@ const e = require("express");
     editPost,
     getPostbyWriter,
     checkWriterId,
-    getAllPostWithFeatures
+    checkOnePost,
+    getAllPostWithFeatures,
+    checkAuthId
     };
 
     module.exports = functionPostRepo;

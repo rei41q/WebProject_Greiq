@@ -130,8 +130,8 @@ validate, userController.createUser);
  */
 
 
-userRouter.put("/user/:userId",checkSchema(registrationValidationObject),
-validate, tokenVerification, userController.editUser)
+userRouter.put("/user/:userId",tokenVerification, checkSchema(registrationValidationObject),
+validate, userController.editUser)
 
 //---------------------------------------------------------------------#
 

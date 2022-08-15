@@ -33,10 +33,12 @@
     );
   };
 
-  const checkSameEmail = async (email) => {
+  const checkSameEmail = async ({email, authUserId}) => {
     return await User.findOne({
       where:{
         email : email,
+        id : authUserId
+
       }
     }
     )

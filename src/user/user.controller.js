@@ -5,9 +5,12 @@ const error500 = "Something went wrong. Please try again later";
 const emailExist = "This email is already being used, Please choose another email"
 const updatesuccess = "Update successful"
 const registrationsuccessful = "Congratulations! Your account has been created"
-
+const error401 = "Authorization failed" 
 const errorMessage = {
-error500, emailExist
+error500, 
+emailExist,
+error401
+
 };
 
 const succesMessage = {
@@ -24,20 +27,25 @@ const editUser = async (req, res) => {
     const {fullname, email, password } = req.body;
     const { userId } = req.params;
     const  authUser  = req.auth;
+    const  authUserId = authUser.id;
+    const  authUserEmail = authUser.email;
 
+    console.log("auth email", authUserEmail)
     const getEditUserService = await userService.editUser({
       fullname,
       email,
       password,
       userId,
-      authEmail : authUser.email
+      authUserId
     })
-    if (getEditUserService)
+    if (getEditUserService && authUserId==userId)
     {
-      authUser.email = authEmail;
       return res.status(200).json({ message : succesMessage.updatesuccess});
     }
+    else if(authUserId!=userId){
 
+      return res.status(401 ).json({ message :errorMessage.error401});
+    }
     else 
     return res.status(400).json( {message : errorMessage.emailExist});
 

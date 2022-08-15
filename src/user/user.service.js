@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const tokenVerification = require("../middleware/token.verification");
 const userRepo = require("./user.repo");
 const saltRound = 10;
 
@@ -20,26 +21,21 @@ const createUser = async ({ fullname, email, password }) => {
   else return null;
 };
 
-const editUser = async({  fullname, email, password, userId, authEmail}) =>{
+const editUser = async({  fullname, email, password, userId, authUserId}) =>{
 
   const hashedPassword = await bcrypt.hash(password, saltRound)
 
-  //JIKA EMAIL SAMA DENGAN EMAIL USER INI, TAPI HANYA MAU UPDATE FULL NAMENYA
-  // const checkSameEmail =  await userRepo.checkSameEmail(email);
-
-  // console.log("Email Check", checkSameEmail.email, "email pilihan", email)
-  //------------------------------------------------------------------//
-
   //CEK EMAIL YANG INGIN DIUPDATE ADA ATAU ENGGA DALAM TABEL USERS
-
   const checkEmailAllUser = await userRepo.checkEmailAllUser(email);
 
-  console.log("auth email", authEmail)
 
-  if(!checkEmailAllUser || checkSameEmail==authEmail ){
+  //Jika hanya ingin update Fullnamenya aja
+  const checkSameEmail = await userRepo.checkSameEmail({email, authUserId});
+
+  if(!checkEmailAllUser || checkSameEmail){
       const getUserRepo = await userRepo.editUser({
       fullname, 
-      email, 
+      email,
       password : hashedPassword, 
       userId
     })
