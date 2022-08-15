@@ -14,18 +14,12 @@ const e = require("express");
             return await Post.findAll();
     }
     const getAllPostWithFeatures = async ({ searchPostTitle, sortOption, pageNumber }) => {
-        let orderBy = "title"; //Default Order
 
         if (!sortOption) {
             //DEFAULT SORT
             orderBy = "id";
             sortOption = "ASC";
         }
-    
-        // if (!pageNumber) {
-        //     //DEFAULT PageNumber (Halaman 1)
-        //     pageNumber = 1;
-        // }
 
         if (sortOption || pageNumber || searchPsostTitle) {
 
@@ -93,8 +87,7 @@ const e = require("express");
     sortOption,
     pageNumber,
     }) => {
-    let orderBy = "title"; //Default Order
-
+        
     if (!sortOption) {
         //DEFAULT SORT
         orderBy = "id";

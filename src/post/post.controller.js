@@ -15,6 +15,7 @@ const createPost = async (req, res) => {
   try {
     const { title, image, body } = req.body;
     const authUser = req.auth;
+
     const createPost = await postService.createPost({
       title,
       image,
@@ -52,6 +53,7 @@ const getAllPostOrByWriter = async (req, res) => {
 
         if(resultPostbyWriter!="")  //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT
         return res.status(200).json(resultPostbyWriter); 
+
         else return res.status(400).json({ message: errorMessage.error406 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 406 (POST NOT FOUND) 
       }
 
@@ -62,13 +64,13 @@ const getAllPostOrByWriter = async (req, res) => {
     else {
         //JIKA USER TIDAK MEMILIH WRITER ID, MAKA AKAN MASUK PADA GET ALL POST, GET ALL POST MEMILIK 3 FITUR
         if(searchPostTitle || sortOption || pageNumber){
-        const resultAllPostWithFeatures = await postService.getAllPostWithFeatures({
+        const getAllPostWithFeatures = await postService.getAllPostWithFeatures({
           searchPostTitle,
           sortOption,
           pageNumber
         });
           if (getAllPost !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
-            return res.status(200).json(resultAllPostWithFeatures);
+            return res.status(200).json(getAllPostWithFeatures);
           } else { //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
             return res.status(406).json({ message: errorMessage.error406 });
           }
@@ -97,9 +99,9 @@ const getDetailPost = async (req, res) => {
     const checkpostIdExists = await postService.getDetailPost(postId);
 
     if (checkpostIdExists) {
-      const getOnePost = await postService.getDetailPost(postId);
+      const getDetailPost = await postService.getDetailPost(postId);
 
-      return res.status(200).json(getOnePost);
+      return res.status(200).json(getDetailPost);
 
     }
      
@@ -120,10 +122,13 @@ const editPost = async (req, res) => {
 
     const  authUserId = authUser.id;
 
-
     const checkpostId = await postService.checkOnePost({postId});
 
-    const checkAuthId = await postService.checkAuthId({postId, authUserId});
+    const checkAuthId = await postService.checkAuthId(
+        {   
+            postId, 
+            authUserId
+        });
 
     if (checkpostId && checkAuthId) {
 
@@ -134,13 +139,15 @@ const editPost = async (req, res) => {
       authUserId,
       postId,
     });
-    if(resultEditPost) return res.status(200).send({ message: updatesuccess });
+    if(resultEditPost)
+    return res.status(200).send({ message: updatesuccess });
     
-    else return res.status(406).send({ message: errorMessage.error406 });
+    else 
+    return res.status(406).send({ message: errorMessage.error406 });
+
     }
-    else if(!checkAuthId){
-        return res.status(406).send({ message: errorMessage.error401 });
-    }
+    else if(!checkAuthId)
+    return res.status(406).send({ message: errorMessage.error401 });
     
   } catch (error) {
     return res.status(500).send({ message: errorMessage.error500 });

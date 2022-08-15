@@ -13,18 +13,6 @@ const checkWriterId = async (writerId) => {
   return await postRepo.checkWriterId(writerId);
 };
 
-const getPostsWithPageNumber = async ({
-  searchPostTitle,
-  sortOption,
-  pageNumber,
-}) => {
-  return await postRepo.getPostsWithPageNumber({
-    searchPostTitle,
-    sortOption,
-    pageNumber,
-  });
-};
-
 const getAllPostWithFeatures = async ({
     searchPostTitle,
     sortOption,
