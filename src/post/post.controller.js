@@ -19,13 +19,15 @@ const createPost = async (req, res) => {
     });
 
     return res.status(200).json(createPost);
+
   } catch (error) {
     return res.status(500).json({ message: errorMessage.error500 });
   }
 };
 
-const getAllPost = async (req, res) => {
-  //User bisa memilih sesuai keinginan
+const getAllPostOrByWriter = async (req, res) => {
+
+  //User bisa memilih fitur sesuai keinginan
 
   try {
     const { writerId, sortOption, searchPostTitle, pageNumber } = req.query;
@@ -36,50 +38,50 @@ const getAllPost = async (req, res) => {
       const checkWriterId = await postService.checkWriterId(writerId);
 
       if (checkWriterId) {
-        //AGAR WriterId JUGA BISA DI SORTING DAN PAGINATE
+        //WriterId MEMILIKI 3 FITUR
         const resultPostbyWriter = await postService.getPostbyWriter({
           writerId,
           searchPostTitle,
           sortOption,
           pageNumber,
         });
+
         if(resultPostbyWriter!="")
         return res.status(200).json(resultPostbyWriter);
         else return res.status(400).json({ message: errorMessage.error400 });
       }
 
-      //JIKA TIDAK ADA POST, RETURN POST NOT FOUND, ERROR STATUS (400)
+      //JIKA TIDAK ADA POST OLEH PENULIS INI, RETURN POST NOT FOUND, ERROR STATUS (400)
       else return res.status(400).json({ message: errorMessage.error400 });
     } 
         
     else {
-        //JIKA User tidak memilih pageNumber maka akan menghasilkan semua data post
+        //JIKA USER TIDAK MEMILIH WRITER ID, MAKA AKAN MASUK PADA GET ALL POST, GET ALL POST MEMILIK 3 FITUR
         if(searchPostTitle || sortOption || pageNumber){
-            console.log("masuk")
-        const getAllPost = await postService.getAllPostWithFeatures({
+        const resultAllPostWithFeatures = await postService.getAllPostWithFeatures({
           searchPostTitle,
           sortOption,
           pageNumber
         });
-          if (getAllPost !="") {
-            return res.status(200).json(getAllPost);
-          } else {
+          if (getAllPost !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
+            return res.status(200).json(resultAllPostWithFeatures);
+          } else { //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
             return res.status(400).json({ message: errorMessage.error400 });
           }
         }
         else{
+            // JIKA USER TIDAK MEMILIH PALING TIDAK SALAH SATU DARI FITUR, MAKA AKAN GET ALL POST
             const getAllPost = await postService.getAllPost();
-              if (getAllPost !="") {
+
+              if (getAllPost !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
                 return res.status(200).json(getAllPost);
-              } else {
+              } else {  //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
                 return res.status(400).json({ message: errorMessage.error400 });
               }
             }
-
-        
       }
     }
-   catch (error) {
+   catch (error) { //JIKA TERDAPAT ERROR YG TIDAK DIKETAHUI, STATUS (500)
     return res.status(500).json({ message: errorMessage.error500 });
   }
 };
@@ -124,7 +126,7 @@ const editPost = async (req, res) => {
 };
 const functionPost = {
   createPost,
-  getAllPost,
+  getAllPostOrByWriter,
   editPost,
   getDetailPost,
 };
