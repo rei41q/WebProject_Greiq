@@ -59,7 +59,7 @@ GET http://localhost:8000/posts?sortOption=ASC
 
 ### API GET POST With Search | PUBLIC API
 
-GET http://localhost:8000/posts?searchPostTitle=sakura
+GET http://localhost:8000/posts?searchPostTitle=pantai
 
 ### API GET POST WITH SORT AND PAGINATION
 
@@ -67,25 +67,25 @@ GET http://localhost:8000/posts?sortOption=ASC&pageNumber=1
 
 ### API GET POST WITH SEARCH AND SORT
 
-GET http://localhost:8000/posts?searchPostTitle=sakura&sortOption=ASC
+GET http://localhost:8000/posts?searchPostTitle=pantai&sortOption=ASC
 
 ### API GET POST WITH SEARCH , PAGINATE AND SORT
 
-GET http://localhost:8000/posts?searchPostTitle=naruto&sortOption=ASC&pageNumber=1
+GET http://localhost:8000/posts?searchPostTitle=pantai&sortOption=ASC&pageNumber=1
 
 ### API GET POST BY WRITER 
 GET http://localhost:8000/posts?writerId=1
 
 ### API GET POST BY WRITER AND PAGE NUMBER
-GET http://localhost:8000/posts?writerId=15&pageNumber=1
+GET http://localhost:8000/posts?writerId=1&pageNumber=1
 
 ### API GET POST BY WRITER AND SORT | PUBLIC API
 
-GET http://localhost:8000/posts??writerId=15&sortOption=ASC
+GET http://localhost:8000/posts??writerId=1&sortOption=ASC
 
 ### API GET POST BY WRITER ,SORT AND SEARCH | PUBLIC API
 
-GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura
+GET http://localhost:8000/posts?writerId=2&searchPostTitle=pantai
 
 ### API GET POST BY WRITER ,SORT, PAGINATE
 
@@ -93,11 +93,11 @@ GET http://localhost:8000/posts?writerId=1&sortOption=ASC&pageNumber=1
 
 ### API GET POST BY WRITER ,SORT AND SEARCH
 
-GET http://localhost:8000/posts?writerId=15&searchPostTitle=sakura&sortOption=ASC
+GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=ASC
 
 ### API GET POST BY WRITER ,SORT, PAGINATE AND SEARCH
 
-GET http://localhost:8000/posts?writerId=15&searchPostTitle=naruto&sortOption=ASC&pageNumber=1
+GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=ASC&pageNumber=1
 
 
 ### API GET ONE POST | PUBLIC API
