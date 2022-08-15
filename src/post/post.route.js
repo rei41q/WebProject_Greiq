@@ -20,6 +20,7 @@ postRouter.post("/posts", tokenVerification, (postController.createPost))
  *    tags:
  *      - post
  *    summary: API Create Post (PRIVATE & VALIDATION)
+ *    description: API untuk pendaftaran user, Jika email sudah terdaftarkan sebelumnya, maka pendaftaran gagal
  *    requestBody:
  *      required: true
  *      content:
@@ -74,7 +75,8 @@ postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPos
  *  get:
  *    tags:
  *      - post
- *    summary: API Get All Post / By Writer (Fitur Sort, Search, Paginate) User Bisa Memilih Pilihan Sesuai Keinginannya (PUBLIC & VALIDATION) 
+ *    summary: API Get All Post / By Writer (PUBLIC & VALIDATION) 
+ *    description: API untuk mendapatkan semua post / dari penulis tertentu, memilik 3 Fitur (Sort, Search, Paginate) User Bisa Memilih Pilihan Fitur Sesuai Keinginannya 
  *    parameters:
  *      - in: query
  *        name: writerId
@@ -87,7 +89,7 @@ postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPos
  *      - in: query
  *        name: searchPostTitle
  *        allowEmptyValue: true
- *        example : Pantai Gatra
+ *        example : pantai gatra
  *      - in: query
  *        name: pageNumber
  *        allowEmptyValue: true

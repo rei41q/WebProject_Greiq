@@ -8,3 +8,4 @@ KET : CD to this directory
 2. Create database & Create user and set to env FILE (KET : Change .env.example file to .env)
 3. Migrate
 4. npm start
+
