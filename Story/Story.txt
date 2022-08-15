@@ -1,6 +1,6 @@
 * Website ini akan memiliki 7 Frontend website:
 
-1. REGISTRASI (Public)
+1. REGISTRASI (Public dan VALIDATION)
 
 Pada saat masuk menu Regristasi, user akan memasukan
 nama lengkap, email, dan password 
@@ -10,7 +10,7 @@ KET : Jika email sudah terdaftarkan sebelumnya, maka pendaftaran gagal
 
 KET password : password akan diamakan dalam bentuk BCRYPT.
 
-2. LOGIN (Public)
+2. LOGIN (Public dan VALIDATION)
 
 Untuk login, user perlu memasukan email dan password.
 
@@ -25,7 +25,7 @@ post untuk membuat postingan
 KET : Untuk memasuki User dashboard pengguna memerlukan token yang sebelumnya sudah didapatkan 
 pada saat login.
 
-4. CREATE POST PAGE (Private)
+4. CREATE POST PAGE (Private dan VALIDATION)
 
 Ketika tombol buat post di klik, akan masuk ke halaman pembuatan
 post. Member dapat membuat judul, menambahkan url image, dan
@@ -34,7 +34,7 @@ menyimpan post dan mempublishnya.
 
 KET : memerlukan tanpa pengenal berupa token
 
-5. EDIT POST PAGE (Private)
+5. EDIT POST PAGE (Private  dan VALIDATION)
 
 Ketika tombol edit post di klik, akan masuk ke halaman edit post.
 Form sudah terisi dengan data post yang akan diedit. Member
@@ -48,7 +48,11 @@ KET : memerlukan tanpa pengenal berupa token
 6. HOME PAGE (Public)
 
 Semua orang dapat mengunjungi halaman home page dan melihat
-semua post.
+semua post. (Ada 3 fitur didalam home page (search, pagenate, dan short))
+
+user bebas memilih setiap fitur yang ada
+
+Jika user mencari post berdasarkan writer Id, writer id juga memilik 3 fitur yang sama
 
 7. DETAIL POST PAGE (public)
 
