@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "fullname": "greiq",
-    "email": "greiq@gmail.com",
+    "email": "greiqbaru@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1QGdtYWlsLmNvbSIsImlhdCI6MTY2MDU5MzMxMCwiZXhwIjoxNjYwNjc5NzEwfQ.tzRTRE8l6CzKRi6791MxtW5YAYBZewNWiWeO-5V0ask
 
 {
     "title": "pantai",

@@ -65,14 +65,13 @@ const getAllPostOrByWriter = async (req, res) => {
         //JIKA USER TIDAK MEMILIH WRITER ID, MAKA AKAN MASUK PADA GET ALL POST, 
         
         //GET ALL POST MEMILIK 3 FITUR
-        
         if(searchPostTitle || sortOption || pageNumber){
         const getAllPostWithFeatures = await postService.getAllPostWithFeatures({
           searchPostTitle,
           sortOption,
           pageNumber
         });
-          if (getAllPost !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
+          if (getAllPostWithFeatures !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
             return res.status(200).json(getAllPostWithFeatures);
           } else { //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
             return res.status(406).json({ message: errorMessage.error406 });

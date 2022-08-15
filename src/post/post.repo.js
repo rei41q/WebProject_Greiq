@@ -14,6 +14,8 @@ const e = require("express");
             return await Post.findAll();
     }
     const getAllPostWithFeatures = async ({ searchPostTitle, sortOption, pageNumber }) => {
+        
+        let orderBy = "title"   
 
         if (!sortOption) {
             //DEFAULT SORT
@@ -87,7 +89,7 @@ const e = require("express");
     sortOption,
     pageNumber,
     }) => {
-        
+        let orderBy = "title" 
     if (!sortOption) {
         //DEFAULT SORT
         orderBy = "id";
