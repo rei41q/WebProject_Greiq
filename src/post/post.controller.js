@@ -46,12 +46,12 @@ const getAllPostOrByWriter = async (req, res) => {
           pageNumber,
         });
 
-        if(resultPostbyWriter!="")
-        return res.status(200).json(resultPostbyWriter);
-        else return res.status(400).json({ message: errorMessage.error400 });
+        if(resultPostbyWriter!="")  //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA PADA POST 
+        return res.status(200).json(resultPostbyWriter); 
+        else return res.status(400).json({ message: errorMessage.error400 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 400 (POST NOT FOUND) 
       }
 
-      //JIKA TIDAK ADA POST OLEH PENULIS INI, RETURN POST NOT FOUND, ERROR STATUS (400)
+      //JIKA TIDAK ADA POST OLEH ID PENULIS INI, RETURN POST NOT FOUND, ERROR STATUS (400)
       else return res.status(400).json({ message: errorMessage.error400 });
     } 
         
