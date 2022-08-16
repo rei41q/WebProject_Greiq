@@ -2,12 +2,12 @@
     const { Op, where } = require("sequelize");
 const e = require("express");
 
-    const createPost = async ({ title, image, body, authUser }) => {
+    const createPost = async ({ title, image, body, authUserId }) => {
     return await Post.create({
         title: title,
         image: image,
         body: body,
-        userId: authUser.id,
+        userId: authUserId,
     });
     };
     const getAllPost = async () => {

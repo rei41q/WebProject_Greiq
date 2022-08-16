@@ -14,13 +14,15 @@ const errorMessage = {
 const createPost = async (req, res) => {
   try {
     const { title, image, body } = req.body;
-    const authUser = req.auth;
+    const  authUser  = req.auth;
 
+    const  authUserId = authUser.id;
+    
     const createPost = await postService.createPost({
       title,
       image,
       body,
-      authUser,
+      authUserId,
     });
 
     return res.status(200).json(createPost);

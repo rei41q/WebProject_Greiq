@@ -1,11 +1,11 @@
 const postRepo = require("./post.repo");
 
-const createPost = async ({ title, image, body, authUser }) => {
+const createPost = async ({ title, image, body, authUserId }) => {
   return await postRepo.createPost({
     title,
     image,
     body,
-    authUser,
+    authUserId,
   });
 };
 

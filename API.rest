@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "fullname": "greiq",
-    "email": "greiqbaru@gmail.com",
+    "email": "greiqbaru2@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -23,7 +23,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiqbaru@gmail.com",
+    "email": "greiqbaru2@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1QGdtYWlsLmNvbSIsImlhdCI6MTY2MDU5MzMxMCwiZXhwIjoxNjYwNjc5NzEwfQ.tzRTRE8l6CzKRi6791MxtW5YAYBZewNWiWeO-5V0ask
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1MkBnbWFpbC5jb20iLCJpYXQiOjE2NjA2MjM4NzYsImV4cCI6MTY2MDcxMDI3Nn0.qqSTSQmo1XDSV4fQw1q_UHdmWnoIqAENhTE25mMXl2Q
 
 {
     "title": "pantai",
@@ -97,16 +97,16 @@ GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=ASC
 
 ### API GET POST BY WRITER ,SORT, PAGINATE AND SEARCH
 
-GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=ASC&pageNumber=1
+GET http://localhost:8000/posts?writerId=2&searchPostTitle=pantai&sortOption=ASC&pageNumber=1
 
 
 ### API GET ONE POST | PUBLIC API
 GET http://localhost:8000/posts/11
 
 ### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/posts/77
+PUT  http://localhost:8000/posts/101
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1QGdtYWlsLmNvbSIsImlhdCI6MTY2MDU5MzMxMCwiZXhwIjoxNjYwNjc5NzEwfQ.tzRTRE8l6CzKRi6791MxtW5YAYBZewNWiWeO-5V0ask
 
 {
     "title": "update pantai gatra 10",
@@ -115,12 +115,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuY
 }
 
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/user/1
+PUT  http://localhost:8000/user/2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImZ1bGxuYW1lIjoiZ3JlaXEiLCJlbWFpbCI6ImdyZWlxYmFydUBnbWFpbC5jb20iLCJpYXQiOjE2NjA1NTc2NzAsImV4cCI6MTY2MDY0NDA3MH0.ISUqlaOzPNuowGc8hgyyOHBYYryigVLWrU7ozIHibts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1QGdtYWlsLmNvbSIsImlhdCI6MTY2MDU5MzMxMCwiZXhwIjoxNjYwNjc5NzEwfQ.tzRTRE8l6CzKRi6791MxtW5YAYBZewNWiWeO-5V0ask
 
 {
-    "fullname" : "greiq2",
-    "email" : "lala@gmail.com",
+    "fullname" : "greiq baru 2",
+    "email" : "greiqbaru@gmail.com",
     "password" : "123456@12Aa"
 }
