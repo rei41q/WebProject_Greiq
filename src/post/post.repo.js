@@ -1,6 +1,9 @@
     const { Post } = require("../database/models");
     const { Op, where } = require("sequelize");
     const e = require("express");
+    let orderBy="title";
+    let defaultOrderBy = "id";
+    let defaultSortOption = "ASC";
 
     const createPost = async ({ title, image, body, authUserId }) => {
     return await Post.create({
@@ -11,7 +14,9 @@
     });
     };
     const getAllPost = async () => {
+
     return await Post.findAll();
+        
     };
 
     const getAllPostWithFeatures = async ({
@@ -19,27 +24,51 @@
     sortOption,
     pageNumber,
     }) => {
-    let orderBy = "title";
 
     if (!sortOption) {
         //DEFAULT SORT
-        orderBy = "id";
-        sortOption = "ASC";
-    }
+        orderBy = defaultOrderBy;
+        sortOption = defaultSortOption;
+    }           
+            //FITUR PILIHAN USER (DIMASUKAN DALAM FUNCTION AGAR MUDAH DICEK/MAINTANCE/NAMBAH FITUR)
+            function sortOptionIsSelected(){ 
+                if(sortOption && !pageNumber && !searchPostTitle){
+                    return true;;
+                }
+            return false;
+            }
+            function sortOptionAndPageNumberIsSelected(){
+                if(sortOption && pageNumber && !searchPostTitle){
+                    return true;
+                }
+            return false;
+            }
+            function sortOptionAndSearchIsSelected(){
+                if(sortOption && !pageNumber && searchPostTitle){
+                    return true;
+                }
+            return false;
+            }
+            function sortOptionPageNumberAndSearchIsSelected(){
+                if(sortOption && pageNumber && searchPostTitle){
+                    return true;
+                }
+            return false;
+            }
 
-    if (sortOption && !pageNumber && !searchPostTitle) {
+    if (sortOptionIsSelected()==true) {
         return await Post.findAll({
         order: [[orderBy, sortOption]],
         });
         
-    } else if (sortOption && pageNumber && !searchPostTitle) {
+    } else if (sortOptionAndPageNumberIsSelected()==true) {
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
         offset: (pageNumber - 1) * 5 + 1 - 1,
         limit: 5,
         });
-    } else if (sortOption && !pageNumber && searchPostTitle) {
+    } else if (sortOptionAndSearchIsSelected()==true) {
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
@@ -49,7 +78,7 @@
             },
         },
         });
-    } else if (sortOption && pageNumber && searchPostTitle) {
+    } else if (sortOptionPageNumberAndSearchIsSelected()==true) {
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
@@ -64,80 +93,88 @@
         });
     }
     };
+
+    const getPostsbyWriter = async ({
+    writerId,
+    }) => {
+
+        return await Post.findAll({
+            where: {
+            userId: writerId,
+            },
+        });
+    };
+
+    const getPostsByWriterWithFeatures = async ({
+        writerId,
+        searchPostTitle,
+        sortOption,
+        pageNumber,
+        }) => {
+        if (!sortOption) {
+            //DEFAULT SORT
+            orderBy = defaultOrderBy;
+            sortOption = defaultSortOption;
+        }
+            if (writerId && sortOption && !pageNumber && !searchPostTitle) {
+            return await Post.findAll({
+                order: [[orderBy, sortOption]],
+    
+                where: {
+                // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
+    
+                userId: writerId,
+                },
+            });
+            } else if (writerId && sortOption && pageNumber && !searchPostTitle) {
+            return await Post.findAll({
+                order: [[orderBy, sortOption]],
+    
+                offset: (pageNumber - 1) * 5 + 1 - 1,
+                limit: 5,
+    
+                where: {
+                // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
+    
+                userId: writerId,
+                },
+            });
+            } else if (writerId && sortOption && !pageNumber && searchPostTitle) {
+            return await Post.findAll({
+                order: [[orderBy, sortOption]],
+    
+                where: {
+                userId: writerId,
+                title: {
+                    [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
+                },
+                },
+            });
+            } else if (writerId && sortOption && pageNumber && searchPostTitle) {
+            return await Post.findAll({
+                order: [[orderBy, sortOption]],
+    
+                offset: (pageNumber - 1) * 5 + 1 - 1,
+                limit: 5,
+    
+                where: {
+                userId: writerId,
+                title: {
+                    [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
+                },
+                },
+            });
+            }
+    }
 
     const getDetailPost = async (postId) => {
-    return await Post.findOne({
-        where: {
-        id: postId,
-        },
-    });
-    };
-
-    const getPostbyWriter = async ({
-    writerId,
-    searchPostTitle,
-    sortOption,
-    pageNumber,
-    }) => {
-    let orderBy = "title";
-    if (!sortOption) {
-        //DEFAULT SORT
-        orderBy = "id";
-        sortOption = "ASC";
-    }
-
-    if (writerId || sortOption || pageNumber || searchPsostTitle) {
-        if (writerId && sortOption && !pageNumber && !searchPostTitle) {
-        return await Post.findAll({
-            order: [[orderBy, sortOption]],
-
+        return await Post.findOne({
             where: {
-            // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
-
-            userId: writerId,
+            id: postId,
             },
         });
-        } else if (writerId && sortOption && pageNumber && !searchPostTitle) {
-        return await Post.findAll({
-            order: [[orderBy, sortOption]],
+        };
 
-            offset: (pageNumber - 1) * 5 + 1 - 1,
-            limit: 5,
-
-            where: {
-            // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
-
-            userId: writerId,
-            },
-        });
-        } else if (writerId && sortOption && !pageNumber && searchPostTitle) {
-        return await Post.findAll({
-            order: [[orderBy, sortOption]],
-
-            where: {
-            userId: writerId,
-            title: {
-                [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
-            },
-            },
-        });
-        } else if (writerId && sortOption && pageNumber && searchPostTitle) {
-        return await Post.findAll({
-            order: [[orderBy, sortOption]],
-
-            offset: (pageNumber - 1) * 5 + 1 - 1,
-            limit: 5,
-
-            where: {
-            userId: writerId,
-            title: {
-                [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
-            },
-            },
-        });
-        }
-    }
-    };
     const checkAuthId = async ({ postId, authUserId }) => {
     return await Post.findOne({
         where: {
@@ -162,7 +199,7 @@
         }
     );
     };
-    const checkWriterId = async (writerId) => {
+    const checkWriterIdExist = async (writerId) => {
     return await Post.findOne({
         where: {
         userId: writerId,
@@ -170,7 +207,7 @@
     });
     };
 
-    const checkOnePost = async ({ postId }) => {
+    const checkpostIdExists = async ({ postId }) => {
     return await Post.findOne({
         where: {
         id: postId,
@@ -182,11 +219,12 @@
     getAllPost,
     getDetailPost,
     editPost,
-    getPostbyWriter,
-    checkWriterId,
-    checkOnePost,
+    getPostsbyWriter,
+    checkWriterIdExist,
+    checkpostIdExists,
     getAllPostWithFeatures,
     checkAuthId,
+    getPostsByWriterWithFeatures
     };
 
     module.exports = functionPostRepo;

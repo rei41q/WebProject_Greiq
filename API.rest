@@ -85,7 +85,7 @@ GET http://localhost:8000/posts??writerId=1&sortOption=ASC
 
 ### API GET POST BY WRITER ,SORT AND SEARCH | PUBLIC API
 
-GET http://localhost:8000/posts?writerId=2&searchPostTitle=pantai
+GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai
 
 ### API GET POST BY WRITER ,SORT, PAGINATE
 
@@ -97,8 +97,7 @@ GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=ASC
 
 ### API GET POST BY WRITER ,SORT, PAGINATE AND SEARCH
 
-GET http://localhost:8000/posts?writerId=2&searchPostTitle=pantai&sortOption=ASC&pageNumber=1
-
+GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=ASC&pageNumber=1
 
 ### API GET ONE POST | PUBLIC API
 GET http://localhost:8000/posts/11
@@ -121,6 +120,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hb
 
 {
     "fullname" : "greiq baru 2",
-    "email" : "greiqbaru@gmail.com",
+    "email" : "greiqbaru2@gmail.com",
     "password" : "123456@12Aa"
 }

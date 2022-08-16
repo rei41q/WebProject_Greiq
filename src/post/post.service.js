@@ -9,8 +9,8 @@ const createPost = async ({ title, image, body, authUserId }) => {
   });
 };
 
-const checkWriterId = async (writerId) => {
-  return await postRepo.checkWriterId(writerId);
+const checkWriterIdExist = async (writerId) => {
+  return await postRepo.checkWriterIdExist(writerId);
 };
 
 const getAllPostWithFeatures = async ({
@@ -32,13 +32,21 @@ const getAllPostWithFeatures = async ({
 const getDetailPost = async (postId) => {
   return await postRepo.getDetailPost(postId);
 };
-const getPostbyWriter = async ({
+const getPostsbyWriter = async ({
+  writerId,
+}) => {
+  return await postRepo.getPostsbyWriter({
+    writerId,
+  });
+};
+
+const getPostsByWriterWithFeatures = async ({
   writerId,
   searchPostTitle,
   sortOption,
   pageNumber,
 }) => {
-  return await postRepo.getPostbyWriter({
+  return await postRepo.getPostsByWriterWithFeatures({
     writerId,
     searchPostTitle,
     sortOption,
@@ -62,8 +70,8 @@ const checkAuthId = async ({postId, authUserId}) =>{
     return await postRepo.checkAuthId({postId,authUserId})
 }
 
-const checkOnePost= async ({postId}) => {
-    return await postRepo.checkOnePost({postId})
+const checkpostIdExists= async ({postId}) => {
+    return await postRepo.checkpostIdExists({postId})
 }
 
 const FunctionPostService = {
@@ -71,11 +79,12 @@ const FunctionPostService = {
   getAllPost,
   getDetailPost,
   editPost,
-  checkOnePost,
-  getPostbyWriter,
-  checkWriterId,
+  checkpostIdExists,
+  getPostsbyWriter,
+  checkWriterIdExist,
   getAllPostWithFeatures,
-  checkAuthId
+  checkAuthId,
+  getPostsByWriterWithFeatures
 };
 
 module.exports = FunctionPostService;

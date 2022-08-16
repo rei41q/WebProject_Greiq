@@ -28,8 +28,7 @@ const editUser = async({  fullname, email, password, userId, authUserId}) =>{
   //CEK EMAIL YANG INGIN DIUPDATE ADA ATAU ENGGA DALAM TABEL USERS
   const checkEmailAllUser = await userRepo.checkEmailAllUser(email);
 
-
-  //Jika hanya ingin update Fullnamenya aja
+  //Jika hanya ingin update Fullnamenya/passwordnya aja
   const checkSameEmail = await userRepo.checkSameEmail({email, authUserId});
 
   if(!checkEmailAllUser || checkSameEmail){
