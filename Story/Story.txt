@@ -45,7 +45,7 @@ mempublishnya.
 KET : memerlukan tanpa pengenal berupa token
 
 
-6. HOME PAGE (Public)
+6. HOME PAGE (Public & VALIDATION)
 
 Semua orang dapat mengunjungi halaman home page dan melihat
 semua post. (Ada 3 fitur didalam home page (search, pagenate, dan short))

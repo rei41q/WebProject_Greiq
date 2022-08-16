@@ -30,7 +30,9 @@
         orderBy = defaultOrderBy;
         sortOption = defaultSortOption;
     }           
-            //FITUR PILIHAN USER (DIMASUKAN DALAM FUNCTION AGAR MUDAH DICEK/MAINTANCE/NAMBAH FITUR)
+            //CEK FITUR YG TELAH DIPILIH USER (
+            //DIJADIKAN FUNCTION AGAR MUDAH DICEK/MAINTANCE/NAMBAH FITUR)
+
             function sortOptionIsSelected(){ 
                 if(sortOption && !pageNumber && !searchPostTitle){
                     return true;;
@@ -61,14 +63,16 @@
         order: [[orderBy, sortOption]],
         });
         
-    } else if (sortOptionAndPageNumberIsSelected()==true) {
+    } 
+    else if (sortOptionAndPageNumberIsSelected()==true) {
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
         offset: (pageNumber - 1) * 5 + 1 - 1,
         limit: 5,
         });
-    } else if (sortOptionAndSearchIsSelected()==true) {
+    } 
+    else if (sortOptionAndSearchIsSelected()==true) {
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
@@ -78,7 +82,8 @@
             },
         },
         });
-    } else if (sortOptionPageNumberAndSearchIsSelected()==true) {
+    } 
+    else if (sortOptionPageNumberAndSearchIsSelected()==true) {
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
@@ -94,18 +99,15 @@
     }
     };
 
-    const getPostsbyWriter = async ({
-    writerId,
-    }) => {
-
-        return await Post.findAll({
+const getPostsbyWriter = async ({writerId}) => {
+    return await Post.findAll({
             where: {
             userId: writerId,
             },
         });
     };
 
-    const getPostsByWriterWithFeatures = async ({
+const getPostsByWriterWithFeatures = async ({
         writerId,
         searchPostTitle,
         sortOption,

@@ -4,7 +4,7 @@ const error406 = "Post Not Found";
 const error412 = "Writer ID doesn't exist";
 const error401 = "Authorization failed" 
 const updatesuccess = "Update successful"
-const emptyData = ""
+const emptyResult = ""
 const errorMessage = {
   error500,
   error406,
@@ -36,23 +36,24 @@ const createPost = async (req, res) => {
 
 const getAllPostOrByWriter = async (req, res) => {
 
-  //Refactor agar mudah maintenance 
+  // #------- Refactor agar mudah maintenance -----------#
 
-  // 1. dengan membuat 2 function untuk get all post dan by writer  
+  // 1. Membuat 2 function untuk get all post dan by writer (Agar mudah pengecekan / menambah fitur)
       
     // - fitur memiliki functionnya sendiri
-    // (getAllPostWithFeatures & getPostsByWriterWithFeatures )
+    // (getAllPostWithFeatures & getPostsByWriterWithFeatures ) // update lebih mudah jika salah satu ingin nambah fitur
     
     // - tanpa fitur memiliki functionnya  sendiri
     // (getAllPost & getPostsbyWriter)
 
-    // (Agar mudah pengecekan / menambah fitur)
+  //---------------------------------------------------//
 
-  // 2. memindahkan variable default orderBy ke dalam variable global (repository)
-  
-  // 3. memindahkan kondisi fitur yg telah dipilih user kedalam satu function (featureSelected)
+  // 2. Memindahkan variable default orderBy & default SortOption ke dalam variable global (repository)
+        //(Agar mudah di update jika kedepannya ada perubahan struktur)
 
+  // 3. Memindahkan kondisi fitur yg telah dipilih user menjadi satu function (chooseFeatures)
 
+  // #---------------------------------------------------#
   try {
     
     const { writerId, sortOption, searchPostTitle, pageNumber } = req.query;
@@ -60,7 +61,7 @@ const getAllPostOrByWriter = async (req, res) => {
     //User bisa memilih fitur sesuai keinginan
 
     //-----------------------------------------------------------//
-            function featureSelected() //Check fitur yg dipilih user, ditaru didalam function agar mudah dicek/maintance/nambah fitur
+            function chooseFeatures() //Check fitur yg dipilih user, dijadikan function agar mudah dicek/maintance/nambah fitur
             {   
               if(sortOption || searchPostTitle|| pageNumber){
                   return true;
@@ -68,18 +69,16 @@ const getAllPostOrByWriter = async (req, res) => {
               return false;
             }
     //-----------------------------------------------------------//
-
   
     if (writerId) {  //CEK PARAMETER WriterId ADA/NULL
 
-     
       const checkWriterIdExist= await postService.checkWriterIdExist(writerId);  //CEK WriterId ADA/NULL DALAM DATABASE
 
       if (checkWriterIdExist) {
 
          //WriterId MEMILIKI 3 FITUR
         
-          if(featureSelected() == true ){ //Cek fitur yg dipilih user
+          if(chooseFeatures() == true ){ //Cek fitur yg dipilih user
 
           const getPostsByWriterWithFeatures = await postService.getPostsByWriterWithFeatures({
           writerId,
@@ -88,7 +87,7 @@ const getAllPostOrByWriter = async (req, res) => {
           pageNumber,
         });
 
-              if(getPostsByWriterWithFeatures!=emptyData){  //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT  
+              if(getPostsByWriterWithFeatures!=emptyResult){  //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT  
               return res.status(200).json(getPostsByWriterWithFeatures);   
               }
 
@@ -100,7 +99,7 @@ const getAllPostOrByWriter = async (req, res) => {
         else{ //TANPA FITUR (FUNCTION SENDIRI)
             const resultPostsbyWriter = await postService.getPostsbyWriter({writerId});
 
-              if(resultPostsbyWriter!=emptyData){ //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT
+              if(resultPostsbyWriter!=emptyResult){ //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT
                 
               return res.status(200).json(resultPostsbyWriter); 
               } 
@@ -121,13 +120,13 @@ const getAllPostOrByWriter = async (req, res) => {
        
         //GET ALL POST MEMILIK 3 FITUR
 
-          if(featureSelected() == true){ //Cek fitur yg dipilih user
+          if(chooseFeatures() == true){ //Cek fitur yg dipilih user
           const getAllPostWithFeatures = await postService.getAllPostWithFeatures({
           searchPostTitle,
           sortOption,
           pageNumber
           });
-                if (getAllPostWithFeatures !="") { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
+                if (getAllPostWithFeatures !=emptyResult) { //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
                 return res.status(200).json(getAllPostWithFeatures);
                 } 
                 else { //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
@@ -140,7 +139,7 @@ const getAllPostOrByWriter = async (req, res) => {
               
               const getAllPost = await postService.getAllPost(); 
 
-                if (getAllPost !=emptyData) {  //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
+                if (getAllPost !=emptyResult) {  //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
                 return res.status(200).json(getAllPost);
                 } 
 
