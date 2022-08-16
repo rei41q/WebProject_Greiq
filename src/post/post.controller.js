@@ -56,7 +56,7 @@ const getAllPostOrByWriter = async (req, res) => {
         if(resultPostbyWriter!="")  //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT
         return res.status(200).json(resultPostbyWriter); 
 
-        else return res.status(400).json({ message: errorMessage.error406 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 406 (POST NOT FOUND) 
+        else return res.status(406).json({ message: errorMessage.error406 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 406 (POST NOT FOUND) 
       }
 
       //JIKA TIDAK ADA ID PENULIS INI, RETURN Writer ID doesn't exist

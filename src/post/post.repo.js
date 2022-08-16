@@ -1,6 +1,6 @@
     const { Post } = require("../database/models");
     const { Op, where } = require("sequelize");
-const e = require("express");
+    const e = require("express");
 
     const createPost = async ({ title, image, body, authUserId }) => {
     return await Post.create({
@@ -11,68 +11,58 @@ const e = require("express");
     });
     };
     const getAllPost = async () => {
-            return await Post.findAll();
+    return await Post.findAll();
+    };
+
+    const getAllPostWithFeatures = async ({
+    searchPostTitle,
+    sortOption,
+    pageNumber,
+    }) => {
+    let orderBy = "title";
+
+    if (!sortOption) {
+        //DEFAULT SORT
+        orderBy = "id";
+        sortOption = "ASC";
     }
-    const getAllPostWithFeatures = async ({ searchPostTitle, sortOption, pageNumber }) => {
+
+    if (sortOption && !pageNumber && !searchPostTitle) {
+        return await Post.findAll({
+        order: [[orderBy, sortOption]],
+        });
         
-        let orderBy = "title"   
+    } else if (sortOption && pageNumber && !searchPostTitle) {
+        return await Post.findAll({
+        order: [[orderBy, sortOption]],
 
-        if (!sortOption) {
-            //DEFAULT SORT
-            orderBy = "id";
-            sortOption = "ASC";
-        }
+        offset: (pageNumber - 1) * 5 + 1 - 1,
+        limit: 5,
+        });
+    } else if (sortOption && !pageNumber && searchPostTitle) {
+        return await Post.findAll({
+        order: [[orderBy, sortOption]],
 
-        if (sortOption || pageNumber || searchPsostTitle) {
+        where: {
+            title: {
+            [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
+            },
+        },
+        });
+    } else if (sortOption && pageNumber && searchPostTitle) {
+        return await Post.findAll({
+        order: [[orderBy, sortOption]],
 
-            if (sortOption && !pageNumber && !searchPostTitle) {
+        offset: (pageNumber - 1) * 5 + 1 - 1,
+        limit: 5,
 
-            return await Post.findAll({
-                order: [[orderBy, sortOption]],
-            });
-          
-            } 
-            else if(sortOption && pageNumber && !searchPostTitle){
-
-                return await Post.findAll({
-                    order: [[orderBy, sortOption]],
-        
-                    offset: (pageNumber - 1) * 5 + 1 - 1,
-                    limit: 5,
-                })
-            }
-            else if (sortOption && !pageNumber && searchPostTitle) {
-
-            return await Post.findAll({
-                order: [[orderBy, sortOption]],
-    
-                where: {
-                    title: {
-                        [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
-                    },
-    
-                },
-            });
-            }
-            else if (sortOption && pageNumber && searchPostTitle) {
-  
-            return await Post.findAll({
-                order: [[orderBy, sortOption]],
-    
-                offset: (pageNumber - 1) * 5 + 1 - 1,
-                limit: 5,
-    
-                where: {
-                    title: {
-                        [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
-                    },
-    
-                },
-            });
-            }
-
-        } 
-
+        where: {
+            title: {
+            [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
+            },
+        },
+        });
+    }
     };
 
     const getDetailPost = async (postId) => {
@@ -89,22 +79,15 @@ const e = require("express");
     sortOption,
     pageNumber,
     }) => {
-        let orderBy = "title" 
+    let orderBy = "title";
     if (!sortOption) {
         //DEFAULT SORT
         orderBy = "id";
         sortOption = "ASC";
     }
 
-    // if (!pageNumber) {
-    //     //DEFAULT PageNumber (Halaman 1)
-    //     pageNumber = 1;
-    // }
-
     if (writerId || sortOption || pageNumber || searchPsostTitle) {
-
         if (writerId && sortOption && !pageNumber && !searchPostTitle) {
-
         return await Post.findAll({
             order: [[orderBy, sortOption]],
 
@@ -114,39 +97,7 @@ const e = require("express");
             userId: writerId,
             },
         });
-      
-        } 
-        else if(writerId && sortOption && pageNumber && !searchPostTitle){
-
-            return await Post.findAll({
-                order: [[orderBy, sortOption]],
-    
-                offset: (pageNumber - 1) * 5 + 1 - 1,
-                limit: 5,
-    
-                where: {
-                // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
-    
-                userId: writerId,
-                },
-            })
-        }
-        else if (writerId && sortOption && !pageNumber && searchPostTitle) {
-
-        return await Post.findAll({
-            order: [[orderBy, sortOption]],
-
-            where: {
-                userId: writerId ,
-                title: {
-                    [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
-                },
-
-            },
-        });
-        }
-        else if (writerId && sortOption && pageNumber && searchPostTitle) {
-
+        } else if (writerId && sortOption && pageNumber && !searchPostTitle) {
         return await Post.findAll({
             order: [[orderBy, sortOption]],
 
@@ -154,29 +105,49 @@ const e = require("express");
             limit: 5,
 
             where: {
-                userId: writerId ,
-                title: {
-                    [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
-                },
+            // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
 
+            userId: writerId,
+            },
+        });
+        } else if (writerId && sortOption && !pageNumber && searchPostTitle) {
+        return await Post.findAll({
+            order: [[orderBy, sortOption]],
+
+            where: {
+            userId: writerId,
+            title: {
+                [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
+            },
+            },
+        });
+        } else if (writerId && sortOption && pageNumber && searchPostTitle) {
+        return await Post.findAll({
+            order: [[orderBy, sortOption]],
+
+            offset: (pageNumber - 1) * 5 + 1 - 1,
+            limit: 5,
+
+            where: {
+            userId: writerId,
+            title: {
+                [Op.substring]: searchPostTitle, //Search LIKE %PostTitle%
+            },
             },
         });
         }
-    } 
-    };
-    const checkAuthId = async ({postId, authUserId}) =>{
-
-        return await Post.findOne({
-            where:{
-                id : postId,
-                userId : authUserId
-            }
-        })
-
     }
+    };
+    const checkAuthId = async ({ postId, authUserId }) => {
+    return await Post.findOne({
+        where: {
+        id: postId,
+        userId: authUserId,
+        },
+    });
+    };
 
-    const editPost = async ({ title, image, body, authUserId, postId}) => {
-
+    const editPost = async ({ title, image, body, authUserId, postId }) => {
     return await Post.update(
         {
         title: title,
@@ -186,7 +157,7 @@ const e = require("express");
         {
         where: {
             id: postId,
-            userId : authUserId
+            userId: authUserId,
         },
         }
     );
@@ -199,14 +170,13 @@ const e = require("express");
     });
     };
 
-    const checkOnePost = async ({postId}) =>{
-
-        return await Post.findOne({
-            where: {
-                id : postId,
-            },
-        })
-    }
+    const checkOnePost = async ({ postId }) => {
+    return await Post.findOne({
+        where: {
+        id: postId,
+        },
+    });
+    };
     const functionPostRepo = {
     createPost,
     getAllPost,
@@ -216,7 +186,7 @@ const e = require("express");
     checkWriterId,
     checkOnePost,
     getAllPostWithFeatures,
-    checkAuthId
+    checkAuthId,
     };
 
     module.exports = functionPostRepo;

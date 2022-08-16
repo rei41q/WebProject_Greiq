@@ -80,19 +80,15 @@ postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPos
  *    parameters:
  *      - in: query
  *        name: writerId
- *        allowEmptyValue: true
  *        example : 1
  *      - in: query
  *        name: sortOption
- *        allowEmptyValue: true
  *        example : ASC/DESC
  *      - in: query
  *        name: searchPostTitle
- *        allowEmptyValue: true
  *        example : pantai gatra
  *      - in: query
  *        name: pageNumber
- *        allowEmptyValue: true
  *        example : 1
  *    responses:
  *      '200':

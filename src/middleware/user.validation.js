@@ -33,8 +33,7 @@ const updateUserValidation = [
   
   body("password").isStrongPassword().notEmpty().
   withMessage('Password cannot be empty'),
-
-
+  
 ];
 
 module.exports = {

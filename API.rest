@@ -115,9 +115,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hb
 }
 
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/user/2
+PUT  http://localhost:8000/user/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1QGdtYWlsLmNvbSIsImlhdCI6MTY2MDU5MzMxMCwiZXhwIjoxNjYwNjc5NzEwfQ.tzRTRE8l6CzKRi6791MxtW5YAYBZewNWiWeO-5V0ask
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1MkBnbWFpbC5jb20iLCJpYXQiOjE2NjA2MjM4NzYsImV4cCI6MTY2MDcxMDI3Nn0.qqSTSQmo1XDSV4fQw1q_UHdmWnoIqAENhTE25mMXl2Q
 
 {
     "fullname" : "greiq baru 2",
