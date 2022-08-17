@@ -2,10 +2,6 @@
     const { Op, where } = require("sequelize");
     const e = require("express");
 
-    //#-----------Feature OrderBy--------------#
-
-    let orderBy= "title"
-    
     //#-------------Default Value-----------------------#//
 
     //-------------For get posts by Writer-----------------//
@@ -48,6 +44,8 @@
     sortOption,
     pageNumber,
     }) => {
+
+    let orderBy= "title"
 
     if (!sortOption) {
         //DEFAULT SORT
@@ -137,6 +135,9 @@ const getPostsByWriterWithFeatures = async ({
         sortOption,
         pageNumber,
         }) => {
+
+        let orderBy= "title"
+
         if (!sortOption) {
             //DEFAULT SORT
             orderBy = defaultOrderByForWriter;
@@ -251,7 +252,7 @@ const getPostsByWriterWithFeatures = async ({
         }
     );
     };
-    const checkWriterIdExist = async (writerId) => {
+    const checkWriterIdExists = async (writerId) => {
     return await Post.findOne({
         where: {
         userId: writerId,
@@ -272,7 +273,7 @@ const getPostsByWriterWithFeatures = async ({
     getDetailPost,
     editPost,
     getPostsbyWriter,
-    checkWriterIdExist,
+    checkWriterIdExists,
     checkpostIdExists,
     getAllPostWithFeatures,
     checkAuthId,

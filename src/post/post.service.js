@@ -9,8 +9,8 @@ const createPost = async ({ title, image, body, authUserId }) => {
   });
 };
 
-const checkWriterIdExist = async (writerId) => {
-  return await postRepo.checkWriterIdExist(writerId);
+const checkWriterIdExists = async (writerId) => {
+  return await postRepo.checkWriterIdExists(writerId);
 };
 
 const getAllPostWithFeatures = async ({
@@ -81,7 +81,7 @@ const FunctionPostService = {
   editPost,
   checkpostIdExists,
   getPostsbyWriter,
-  checkWriterIdExist,
+  checkWriterIdExists,
   getAllPostWithFeatures,
   checkAuthId,
   getPostsByWriterWithFeatures

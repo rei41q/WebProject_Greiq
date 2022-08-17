@@ -72,9 +72,9 @@ const getAllPostOrByWriter = async (req, res) => {
   
     if (writerId) {  //CEK PARAMETER WriterId ADA/NULL
 
-      const checkWriterIdExist= await postService.checkWriterIdExist(writerId);  //CEK WriterId ADA/NULL DALAM DATABASE
+      const checkWriterIdExists= await postService.checkWriterIdExists(writerId);  //CEK WriterId ADA/NULL DALAM DATABASE
 
-      if (checkWriterIdExist) {
+      if (checkWriterIdExists) {
 
          //WriterId MEMILIKI 3 FITUR
         
