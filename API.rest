@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "fullname": "greiq",
-    "email": "greiqbaru2@gmail.com",
+    "email": "greiqba@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -23,7 +23,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiqbaru2@gmail.com",
+    "email": "greiqba@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1MkBnbWFpbC5jb20iLCJpYXQiOjE2NjA2MjM4NzYsImV4cCI6MTY2MDcxMDI3Nn0.qqSTSQmo1XDSV4fQw1q_UHdmWnoIqAENhTE25mMXl2Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYUBnbWFpbC5jb20iLCJpYXQiOjE2NjA3MTI1MTYsImV4cCI6MTY2MDc5ODkxNn0.3OOYnwopsoJ9sX9oV3Z8kc6sOadajmYSqz1KRxnI2Bc
 
 {
     "title": "pantai",
@@ -103,9 +103,9 @@ GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=ASC
 GET http://localhost:8000/posts/11
 
 ### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/posts/101
+PUT  http://localhost:8000/posts/131
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1QGdtYWlsLmNvbSIsImlhdCI6MTY2MDU5MzMxMCwiZXhwIjoxNjYwNjc5NzEwfQ.tzRTRE8l6CzKRi6791MxtW5YAYBZewNWiWeO-5V0ask
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYUBnbWFpbC5jb20iLCJpYXQiOjE2NjA3MTI1MTYsImV4cCI6MTY2MDc5ODkxNn0.3OOYnwopsoJ9sX9oV3Z8kc6sOadajmYSqz1KRxnI2Bc
 
 {
     "title": "update pantai gatra 10",
@@ -114,12 +114,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZnVsbG5hb
 }
 
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/user/3
+PUT  http://localhost:8000/user/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYXJ1MkBnbWFpbC5jb20iLCJpYXQiOjE2NjA2MjM4NzYsImV4cCI6MTY2MDcxMDI3Nn0.qqSTSQmo1XDSV4fQw1q_UHdmWnoIqAENhTE25mMXl2Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYUBnbWFpbC5jb20iLCJpYXQiOjE2NjA3MTI1MTYsImV4cCI6MTY2MDc5ODkxNn0.3OOYnwopsoJ9sX9oV3Z8kc6sOadajmYSqz1KRxnI2Bc
 
 {
-    "fullname" : "greiq baru 2",
-    "email" : "greiqbaru2@gmail.com",
-    "password" : "123456@12Aa"
+    "fullname" : "greiq baru 22",
+    "email" : "greiqbaruz@gmail.com",
+    "password" : "123456@12Za"
 }

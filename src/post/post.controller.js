@@ -79,7 +79,7 @@ const getAllPostOrByWriter = async (req, res) => {
          //WriterId MEMILIKI 3 FITUR
         
           if(chooseFeatures() == true ){ //Cek fitur yg dipilih user
-
+            
           const getPostsByWriterWithFeatures = await postService.getPostsByWriterWithFeatures({
           writerId,
           searchPostTitle,
@@ -96,7 +96,7 @@ const getAllPostOrByWriter = async (req, res) => {
               }
 
         }
-        else{ //TANPA FITUR (FUNCTION SENDIRI)
+        else{ //TANPA FITUR (FUNCTION Service SENDIRI)
             const resultPostsbyWriter = await postService.getPostsbyWriter({writerId});
 
               if(resultPostsbyWriter!=emptyResult){ //JIKA HASIL FITUR ADA OLEH ID PENULIS INI, MAKA AKAN MENGEMBALIKAN DATA TERSEBUT

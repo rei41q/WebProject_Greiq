@@ -33,30 +33,30 @@
             //CEK FITUR YG TELAH DIPILIH USER (
             //DIJADIKAN FUNCTION AGAR MUDAH DICEK/MAINTANCE/NAMBAH FITUR)
 
-            function sortOptionIsSelected(){ 
-                if(sortOption && !pageNumber && !searchPostTitle){
-                    return true;;
+                function sortOptionIsSelected(){ 
+                    if(sortOption && !pageNumber && !searchPostTitle){
+                        return true;;
+                    }
+                return false;
                 }
-            return false;
-            }
-            function sortOptionAndPageNumberIsSelected(){
-                if(sortOption && pageNumber && !searchPostTitle){
-                    return true;
+                function sortOptionAndPageNumberIsSelected(){
+                    if(sortOption && pageNumber && !searchPostTitle){
+                        return true;
+                    }
+                return false;
                 }
-            return false;
-            }
-            function sortOptionAndSearchIsSelected(){
-                if(sortOption && !pageNumber && searchPostTitle){
-                    return true;
+                function sortOptionAndSearchIsSelected(){
+                    if(sortOption && !pageNumber && searchPostTitle){
+                        return true;
+                    }
+                return false;
                 }
-            return false;
-            }
-            function sortOptionPageNumberAndSearchIsSelected(){
-                if(sortOption && pageNumber && searchPostTitle){
-                    return true;
+                function sortOptionPageNumberAndSearchIsSelected(){
+                    if(sortOption && pageNumber && searchPostTitle){
+                        return true;
+                    }
+                return false;
                 }
-            return false;
-            }
 
     if (sortOptionIsSelected()==true) {
         return await Post.findAll({
@@ -118,7 +118,33 @@ const getPostsByWriterWithFeatures = async ({
             orderBy = defaultOrderBy;
             sortOption = defaultSortOption;
         }
-            if (writerId && sortOption && !pageNumber && !searchPostTitle) {
+
+                function sortOptionIsSelected(){ 
+                    if(writerId && sortOption && !pageNumber && !searchPostTitle){
+                        return true;;
+                    }
+                return false;
+                }
+                function sortOptionAndPageNumberIsSelected(){
+                    if(writerId && sortOption && pageNumber && !searchPostTitle){
+                        return true;
+                    }
+                return false;
+                }
+                function sortOptionAndSearchIsSelected(){
+                    if(writerId && sortOption && !pageNumber && searchPostTitle){
+                        return true;
+                    }
+                return false;
+                }
+                function sortOptionPageNumberAndSearchIsSelected(){
+                    if(writerId && sortOption && pageNumber && searchPostTitle){
+                        return true;
+                    }
+                return false;
+                }
+    
+            if (sortOptionIsSelected()==true) {
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
@@ -128,7 +154,7 @@ const getPostsByWriterWithFeatures = async ({
                 userId: writerId,
                 },
             });
-            } else if (writerId && sortOption && pageNumber && !searchPostTitle) {
+            } else if (sortOptionAndPageNumberIsSelected()==true) {
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
@@ -141,7 +167,7 @@ const getPostsByWriterWithFeatures = async ({
                 userId: writerId,
                 },
             });
-            } else if (writerId && sortOption && !pageNumber && searchPostTitle) {
+            } else if (sortOptionAndSearchIsSelected()==true) {
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
@@ -152,7 +178,7 @@ const getPostsByWriterWithFeatures = async ({
                 },
                 },
             });
-            } else if (writerId && sortOption && pageNumber && searchPostTitle) {
+            } else if (sortOptionPageNumberAndSearchIsSelected()==true) {
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
