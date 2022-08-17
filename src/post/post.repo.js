@@ -4,7 +4,8 @@
     let orderBy="title";
     let defaultOrderBy = "id";
     let defaultSortOption = "ASC";
-
+    let pageFormula = 5 + 1 - 1
+    
     const createPost = async ({ title, image, body, authUserId }) => {
     return await Post.create({
         title: title,
@@ -68,7 +69,7 @@
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
-        offset: (pageNumber - 1) * 5 + 1 - 1,
+        offset: (pageNumber - 1) * pageFormula,
         limit: 5,
         });
     } 
@@ -87,7 +88,7 @@
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
-        offset: (pageNumber - 1) * 5 + 1 - 1,
+        offset: (pageNumber - 1) * pageFormula,
         limit: 5,
 
         where: {
@@ -158,7 +159,7 @@ const getPostsByWriterWithFeatures = async ({
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
-                offset: (pageNumber - 1) * 5 + 1 - 1,
+                offset: (pageNumber - 1) * pageFormula,
                 limit: 5,
     
                 where: {
@@ -182,7 +183,7 @@ const getPostsByWriterWithFeatures = async ({
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
-                offset: (pageNumber - 1) * 5 + 1 - 1,
+                offset: (pageNumber - 1) * pageFormula,
                 limit: 5,
     
                 where: {
