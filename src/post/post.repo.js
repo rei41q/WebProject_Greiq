@@ -1,12 +1,33 @@
     const { Post } = require("../database/models");
     const { Op, where } = require("sequelize");
     const e = require("express");
-    let orderBy="title";
-    let defaultOrderBy = "id";
-    let defaultSortOption = "ASC";
-    let pageFormula = 5 + 1 - 1 
 
-    //DITARUH PADA VARIABLE GLOBAL AGAR MUDAH MAINTENANCE/UPDATE
+    //#-----------Feature OrderBy--------------#
+
+    let orderBy= "title"
+    
+    //#-------------Default Value-----------------------#//
+
+    //-------------For get posts by Writer-----------------//
+
+    let defaultOrderByForWriter= "id";
+    let defaultSortOptionrForWriter = "ASC";
+
+    let pageFormulaForWriter = 5 + 1 - 1; 
+    let limitValueForWriter = 5;
+
+    //---------- ---For get all post-----------------------//
+
+    let defaultOrderByForAllPost= "id";
+    let defaultSortOptionForAllPost = "ASC";
+
+    let pageFormulaForAllPost = 5 + 1 - 1;
+    let limitValueForAllPost = 5;
+
+    // ( ditaru pada variable global dan dipisah
+    //   agar suatu saat mudah maintenance/update sesuai permintaan ))
+
+    //#---------------------------------------------------#//
 
     const createPost = async ({ title, image, body, authUserId }) => {
     return await Post.create({
@@ -30,8 +51,8 @@
 
     if (!sortOption) {
         //DEFAULT SORT
-        orderBy = defaultOrderBy;
-        sortOption = defaultSortOption;
+        orderBy = defaultOrderByForAllPost;
+        sortOption = defaultSortOptionForAllPost;
     }           
             //CEK FITUR YG TELAH DIPILIH USER (
             //DIJADIKAN FUNCTION AGAR MUDAH DICEK/MAINTANCE/NAMBAH FITUR)
@@ -71,8 +92,8 @@
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
-        offset: (pageNumber - 1) * pageFormula,
-        limit: 5,
+        offset: (pageNumber - 1) * pageFormulaForAllPost,
+        limit: limitValueForAllPost,
         });
     } 
     else if (sortOptionAndSearchIsSelected()==true) {
@@ -90,8 +111,8 @@
         return await Post.findAll({
         order: [[orderBy, sortOption]],
 
-        offset: (pageNumber - 1) * pageFormula,
-        limit: 5,
+        offset: (pageNumber - 1) * pageFormulaForAllPost,
+        limit: limitValueForAllPost,
 
         where: {
             title: {
@@ -118,8 +139,8 @@ const getPostsByWriterWithFeatures = async ({
         }) => {
         if (!sortOption) {
             //DEFAULT SORT
-            orderBy = defaultOrderBy;
-            sortOption = defaultSortOption;
+            orderBy = defaultOrderByForWriter;
+            sortOption = defaultSortOptionrForWriter;
         }
 
                 function sortOptionIsSelected(){ 
@@ -161,8 +182,8 @@ const getPostsByWriterWithFeatures = async ({
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
-                offset: (pageNumber - 1) * pageFormula,
-                limit: 5,
+                offset: (pageNumber - 1) * pageFormulaForWriter,
+                limit: limitValueForWriter,
     
                 where: {
                 // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
@@ -185,8 +206,8 @@ const getPostsByWriterWithFeatures = async ({
             return await Post.findAll({
                 order: [[orderBy, sortOption]],
     
-                offset: (pageNumber - 1) * pageFormula,
-                limit: 5,
+                offset: (pageNumber - 1) * pageFormulaForWriter,
+                limit: limitValueForWriter,
     
                 where: {
                 userId: writerId,
