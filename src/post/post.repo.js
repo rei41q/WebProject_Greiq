@@ -4,8 +4,10 @@
     let orderBy="title";
     let defaultOrderBy = "id";
     let defaultSortOption = "ASC";
-    let pageFormula = 5 + 1 - 1
-    
+    let pageFormula = 5 + 1 - 1 
+
+    //DITARUH PADA VARIABLE GLOBAL AGAR MUDAH MAINTENANCE/UPDATE
+
     const createPost = async ({ title, image, body, authUserId }) => {
     return await Post.create({
         title: title,
