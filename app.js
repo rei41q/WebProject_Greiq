@@ -5,12 +5,14 @@ const userRouter = require("./src/user/user.route");
 const postRouter = require("./src/post/post.route");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDoc = require("./src/config/swagger");
-
+const cors = require('cors')
 const app = express();
 
 const port = process.env.PORT || 8000;
 
 app.use(express.json());
+
+app.use(cors())
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 

@@ -12,8 +12,8 @@ POST http://localhost:8000/user/registration
 Content-Type: application/json
 
 {
-    "fullname": "greiq",
-    "email": "greiqba@gmail.com",
+    "fullname": "greiqterbaru",
+    "email": "greiqterbaru@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -23,7 +23,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiqba@gmail.com",
+    "email": "greiqterbaru222@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,10 +33,10 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYUBnbWFpbC5jb20iLCJpYXQiOjE2NjA3MTI1MTYsImV4cCI6MTY2MDc5ODkxNn0.3OOYnwopsoJ9sX9oV3Z8kc6sOadajmYSqz1KRxnI2Bc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwiaWF0IjoxNjYyMTI0MDcyLCJleHAiOjE2NjI3Mjg4NzJ9.f3333Nuf_RtJI6_YY_W8M7jdj1kuSgUTWhkUV_FHeQQ
 
 {
-    "title": "pantai",
+    "title": "baru",
     "image": "https://salsawisata.b-cdn.net/wp-content/uploads/2021/11/Pantai-Gatra.jpg",
     "body": "Pantai Gatra merupakan salah satu pantai terindah di Indonesia"
 }
@@ -74,7 +74,7 @@ GET http://localhost:8000/posts?searchPostTitle=pantai&sortOption=DESC
 GET http://localhost:8000/posts?searchPostTitle=pantai&sortOption=ASC&pageNumber=1
 
 ### API GET POST BY WRITER 
-GET http://localhost:8000/posts?writerId=1
+GET http://localhost:8000/posts?writerId=8
 
 ### API GET POST BY WRITER AND PAGE NUMBER
 GET http://localhost:8000/posts?writerId=1&pageNumber=1

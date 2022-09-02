@@ -10,7 +10,7 @@
     let defaultSortOptionrForWriter = "ASC";
 
     let pageFormulaForWriter = 5 + 1 - 1; 
-    let limitValueForWriter = 5;
+    let limitValueForWriter = 12;
 
     //---------- ---For get all post-----------------------//
 
@@ -18,7 +18,7 @@
     let defaultSortOptionForAllPost = "ASC";
 
     let pageFormulaForAllPost = 5 + 1 - 1;
-    let limitValueForAllPost = 5;
+    let limitValueForAllPost = 12;
 
     // ( ditaru pada variable global dan dipisah
     //   agar suatu saat mudah maintenance/update sesuai permintaan ))
@@ -175,7 +175,6 @@ const getPostsByWriterWithFeatures = async ({
     
                 where: {
                 // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
-    
                 userId: writerId,
                 },
             });
@@ -188,7 +187,6 @@ const getPostsByWriterWithFeatures = async ({
     
                 where: {
                 // [Op.or]:[  //KONDISI OR PADA DATABASE SESUAI KEINGINAN USER
-    
                 userId: writerId,
                 },
             });
