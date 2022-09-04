@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "fullname": "greiqterbaru",
-    "email": "greiqterbaru@gmail.com",
+    "email": "greiqterbaruzzz@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwiaWF0IjoxNjYyMTI0MDcyLCJleHAiOjE2NjI3Mjg4NzJ9.f3333Nuf_RtJI6_YY_W8M7jdj1kuSgUTWhkUV_FHeQQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwiaWF0IjoxNjYyMjIzMDUyLCJleHAiOjE2NjI4Mjc4NTJ9.9N3VT2MQjhnR-ozoEU8G1UESTotszdx_4kBq_D-zN6c
 
 {
     "title": "baru",
@@ -74,7 +74,8 @@ GET http://localhost:8000/posts?searchPostTitle=pantai&sortOption=DESC
 GET http://localhost:8000/posts?searchPostTitle=pantai&sortOption=ASC&pageNumber=1
 
 ### API GET POST BY WRITER 
-GET http://localhost:8000/posts?writerId=8
+
+GET http://localhost:8000/posts?writerId=3
 
 ### API GET POST BY WRITER AND PAGE NUMBER
 GET http://localhost:8000/posts?writerId=1&pageNumber=1
