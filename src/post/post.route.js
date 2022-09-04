@@ -67,7 +67,7 @@ postRouter.post("/posts", tokenVerification, createPostsValidation, validate, (p
 
 // API GET ALL POST / By Writer
 
-postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPostOrByWriter));
+postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPost));
 
 /**
  * @swagger
@@ -116,7 +116,7 @@ postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPos
 
 //---------------------------------------------------------------------#
 
-
+postRouter.get("/userDashboard",tokenVerification, getPostsValidation, validate, (postController.userDashboard));
 
 // ------------------------------------------------------------#
 

@@ -33,10 +33,10 @@ const getDetailPost = async (postId) => {
   return await postRepo.getDetailPost(postId);
 };
 const getPostsbyWriter = async ({
-  writerId,
+  writerId,authUserId
 }) => {
   return await postRepo.getPostsbyWriter({
-    writerId,
+    writerId,authUserId
   });
 };
 

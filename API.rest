@@ -33,7 +33,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwiaWF0IjoxNjYyMjIzMDUyLCJleHAiOjE2NjI4Mjc4NTJ9.9N3VT2MQjhnR-ozoEU8G1UESTotszdx_4kBq_D-zN6c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbGhbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwiaWF0IjoxNjYyMjIzMDUyLCJleHAiOjE2NjI4Mjc4NTJ9.9N3VT2MQjhnR-ozoEU8G1UESTotszdx_4kBq_D-zN6c
 
 {
     "title": "baru",
@@ -44,6 +44,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hb
 ### API GET ALL USER | PUBLIC API (EXAMPLE)
 
 GET http://localhost:8000/users
+
 
 ### API GET ALL POST| PUBLIC API
 
@@ -75,7 +76,9 @@ GET http://localhost:8000/posts?searchPostTitle=pantai&sortOption=ASC&pageNumber
 
 ### API GET POST BY WRITER 
 
-GET http://localhost:8000/posts?writerId=3
+GET http://localhost:8000/userDashboard?writerId=8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwibG9naW5TdGF0dXMiOnRydWUsImlhdCI6MTY2MjMyNTc3MSwiZXhwIjoxNjYyOTMwNTcxfQ.9wqet74KHUXSVYWFzJNQ4DhOCIdcJjifA22FOHEDD10
 
 ### API GET POST BY WRITER AND PAGE NUMBER
 GET http://localhost:8000/posts?writerId=1&pageNumber=1
@@ -104,9 +107,9 @@ GET http://localhost:8000/posts?writerId=1&searchPostTitle=pantai&sortOption=DES
 GET http://localhost:8000/posts/11
 
 ### API EDIT POST | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/posts/131
+PUT  http://localhost:8000/posts/166
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYUBnbWFpbC5jb20iLCJpYXQiOjE2NjA3MTI1MTYsImV4cCI6MTY2MDc5ODkxNn0.3OOYnwopsoJ9sX9oV3Z8kc6sOadajmYSqz1KRxnI2Bc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwibG9naW5TdGF0dXMiOnRydWUsImlhdCI6MTY2MjI4MTM0NSwiZXhwIjoxNjYyODg2MTQ1fQ.7pPoKDz_D8eGP2e5BJ-KsDUUo6R6315rXk_rQQoGpyo
 
 {
     "title": "update pantai gatra 10",
@@ -115,9 +118,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hb
 }
 
 ### API EDIT USER | PRIVATE API, MEMERLUKAN TOKEN UNTUK MENGAKSESNYA
-PUT  http://localhost:8000/user/4
+PUT  http://localhost:8000/user/8
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJncmVpcSIsImVtYWlsIjoiZ3JlaXFiYUBnbWFpbC5jb20iLCJpYXQiOjE2NjA3MTI1MTYsImV4cCI6MTY2MDc5ODkxNn0.3OOYnwopsoJ9sX9oV3Z8kc6sOadajmYSqz1KRxnI2Bc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwibG9naW5TdGF0dXMiOnRydWUsImlhdCI6MTY2MjI4MTM0NSwiZXhwIjoxNjYyODg2MTQ1fQ.7pPoKDz_D8eGP2e5BJ-KsDUUo6R6315rXk_rQQoGpyo
 
 {
     "fullname" : "greiq baru Z22",

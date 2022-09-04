@@ -121,10 +121,11 @@
     }
     };
 
-const getPostsbyWriter = async ({writerId}) => {
+const getPostsbyWriter = async ({writerId,authUserId}) => {
     return await Post.findAll({
             where: {
             userId: writerId,
+            userId: authUserId
             },
         });
     };
