@@ -75,12 +75,9 @@ postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPos
  *  get:
  *    tags:
  *      - post
- *    summary: API Get All Post / By Writer (PUBLIC & VALIDATION) 
+ *    summary: API Get All Post (PUBLIC & VALIDATION) 
  *    description: API untuk mendapatkan semua post / dari penulis tertentu, memilik 3 Fitur (Sort, Search, Paginate) User Bisa Memilih Pilihan Fitur Sesuai Keinginannya 
  *    parameters:
- *      - in: query
- *        name: writerId
- *        example : 1
  *      - in: query
  *        name: sortOption
  *        example : ASC/DESC
@@ -117,6 +114,52 @@ postRouter.get("/posts", getPostsValidation, validate, (postController.getAllPos
 //---------------------------------------------------------------------#
 
 postRouter.get("/userDashboard",tokenVerification, getPostsValidation, validate, (postController.userDashboard));
+
+/**
+ * @swagger
+ * /userDashboard:
+ *  get:
+ *    security:
+ *      - bearerAuth : []
+ *    tags:
+ *      - post
+ *    summary: API UserDashboard (PRIVATE & VALIDATION) 
+ *    description: API untuk mendapatkan semua post / dari penulis tertentu, memilik 3 Fitur (Sort, Search, Paginate) User Bisa Memilih Pilihan Fitur Sesuai Keinginannya 
+ *    parameters:
+ *      - in: query
+ *        name: writerId
+ *        example : 1
+ *      - in: query
+ *        name: sortOption
+ *        example : ASC/DESC
+ *      - in: query
+ *        name: searchPostTitle
+ *        example : pantai gatra
+ *      - in: query
+ *        name: pageNumber
+ *        example : 1
+ *    responses:
+ *      '200':
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                id:
+ *                  type: string
+ *                title:
+ *                  type: string
+ *                image:
+ *                  type: string
+ *                body:
+ *                  type: string
+ *                userId:
+ *                  type: string
+ *                updatedAt:
+ *                  type: string
+ *                createdAt:
+ *                  type: string
+ */
 
 // ------------------------------------------------------------#
 
