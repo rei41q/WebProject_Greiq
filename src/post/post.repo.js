@@ -9,16 +9,16 @@
     let defaultOrderByForWriter= "id";
     let defaultSortOptionrForWriter = "ASC";
 
-    let pageFormulaForWriter = 5 + 1 - 1; 
-    let limitValueForWriter = 12;
+    let pageFormulaForWriter = 8 + 1 - 1; 
+    let limitValueForWriter = 8;
 
     //---------- ---For get all post-----------------------//
 
     let defaultOrderByForAllPost= "id";
     let defaultSortOptionForAllPost = "ASC";
 
-    let pageFormulaForAllPost = 5 + 1 - 1;
-    let limitValueForAllPost = 12;
+    let pageFormulaForAllPost = 8 + 1 - 1;
+    let limitValueForAllPost = 8;
 
     // ( ditaru pada variable global dan dipisah
     //   agar suatu saat mudah maintenance/update sesuai permintaan ))
