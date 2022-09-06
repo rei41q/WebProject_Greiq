@@ -23,7 +23,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiqterbaru222@gmail.com",
+    "email": "greiqterbaruzzz@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZnVsbGhbWUiOiJncmVpcXRlcmJhcnUyIiwiZW1haWwiOiJncmVpcXRlcmJhcnUyMjJAZ21haWwuY29tIiwiaWF0IjoxNjYyMjIzMDUyLCJleHAiOjE2NjI4Mjc4NTJ9.9N3VT2MQjhnR-ozoEU8G1UESTotszdx_4kBq_D-zN6c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUiLCJlbWFpbCI6ImdyZWlxdGVyYmFydXp6ekBnbWFpbC5jb20iLCJsb2dpblN0YXR1cyI6dHJ1ZSwiaWF0IjoxNjYyMzkyMjY5LCJleHAiOjE2NjI5OTcwNjl9.2fowZDLao1lx1J-FEdk6berMlOr9zacTCvcwvUb5Vyw
 
 {
     "title": "baru",

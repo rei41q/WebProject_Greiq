@@ -1,14 +1,14 @@
 const e = require("express");
 const postService = require("./post.service");
 const error500 = "Something went wrong. Please try again later";
-const error406 = "Post Not Found";
+const error404 = "Post Not Found";
 const error412 = "Writer ID doesn't exist";
 const error401 = "Authorization failed" 
 const updatesuccess = "Update successful"
 const emptyResult = ""
 const errorMessage = {
   error500,
-  error406,
+  error404,
   error412,
   error401,
 };
@@ -81,7 +81,7 @@ const getAllPost = async (req, res) => {
                 return res.status(200).json(getAllPostWithFeatures);
                 } 
                 else { //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND
-                return res.status(406).json({ message: errorMessage.error406 });
+                return res.status(404).json({ message: errorMessage.error404 });
                 }
           }
           else{  //TANPA FITUR (FUNCTION SENDIRI)
@@ -95,7 +95,7 @@ const getAllPost = async (req, res) => {
                 } 
 
                 else {  //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND     
-                return res.status(406).json({ message: errorMessage.error406 });
+                return res.status(404).json({ message: errorMessage.error404 });
                 }
               }
         }
@@ -150,7 +150,7 @@ pageNumber,
     }
 
     else{ 
-    return res.status(406).json({ message: errorMessage.error406 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 406 (POST NOT FOUND) 
+    return res.status(404).json({ message: errorMessage.error404 }); //JIKA TIDAK ADA, MAKA AKAN MENGEMBALIKAN STATUS 404 (POST NOT FOUND) 
     }
 
 }
@@ -165,7 +165,7 @@ else{ //TANPA FITUR (FUNCTION Service SENDIRI)
     } 
     else 
     { 
-    return res.status(406).json({ message: errorMessage.error406 }); //JIKA DATA KOSONG, MAKA AKAN MENGEMBALIKAN STATUS 406 (POST NOT FOUND) 
+    return res.status(404).json({ message: errorMessage.error404 }); //JIKA DATA KOSONG, MAKA AKAN MENGEMBALIKAN STATUS 404 (POST NOT FOUND) 
     }
     }
     else{
@@ -202,7 +202,7 @@ const getDetailPost = async (req, res) => {
       return res.status(200).json(resultDetailPost);
     }
 
-    else return res.status(406).json(errorMessage.error406);
+    else return res.status(404).json(errorMessage.error404);
 
   } catch (error) {
     return res.status(500).json({ message: errorMessage.error500 });
@@ -241,7 +241,7 @@ const editPost = async (req, res) => {
       return res.status(200).send({ message: updatesuccess });
         
       else 
-      return res.status(406).send({ message: errorMessage.error406 });
+      return res.status(404).send({ message: errorMessage.error404 });
 
       }
   
