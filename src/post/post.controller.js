@@ -85,7 +85,7 @@ const getAllPost = async (req, res) => {
                 }
           }
           else{  //TANPA FITUR (FUNCTION SENDIRI)
-            console.log("masuk tanpa fitur")
+            console.log("masuk tanpa fitur zzzzzzzzzzzz")
               // JIKA USER TIDAK MEMILIH FITUR, MAKA AKAN GET ALL POST
               
               const getAllPost = await postService.getAllPost(); 
