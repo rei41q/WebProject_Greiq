@@ -20,13 +20,13 @@ const authUser = async (req, res) => {
           id: existUser.id,
           fullname: existUser.fullname,
           email: existUser.email,
-          loginStatus: true
+          loginStatus: 1
         },
         process.env.JWT_SECRET_TOKEN,
         { expiresIn: "7d" }
       );
   
-      return res.status(200).json({ accessToken: token, id: existUser.id, loginStatus : true});
+      return res.status(200).json({ accessToken: token, id: existUser.id, loginStatus : 1});
     } else {
       return res.status(400).json({message:"Login failed"});
     }
