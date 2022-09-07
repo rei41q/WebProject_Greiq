@@ -4,7 +4,7 @@
     "password": "12345678",
     "database": "tokopedia",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
