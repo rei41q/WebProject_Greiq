@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "fullname": "greiqterbaru",
-    "email": "greiqterbaruzzz@gmail.com",
+    "email": "greiqterbaruzzzzzzzz@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -23,7 +23,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "greiqterbaruzzz@gmail.com",
+    "email": "greiqterbaruzzzzzzzz@gmail.com",
     "password": "123456&Qz"
 }
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZnVsbG5hbWUiOiJncmVpcXRlcmJhcnUiLCJlbWFpbCI6ImdyZWlxdGVyYmFydXp6ekBnbWFpbC5jb20iLCJsb2dpblN0YXR1cyI6dHJ1ZSwiaWF0IjoxNjYyMzkyMjY5LCJleHAiOjE2NjI5OTcwNjl9.2fowZDLao1lx1J-FEdk6berMlOr9zacTCvcwvUb5Vyw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImZ1bGxuYW1lIjoiZ3JlaXF0ZXJiYXJ1IiwiZW1haWwiOiJncmVpcXRlcmJhcnV6enp6enp6ekBnbWFpbC5jb20iLCJsb2dpblN0YXR1cyI6MSwiaWF0IjoxNjYyNTg2MzkzLCJleHAiOjE2NjMxOTExOTN9.HnF-1CNm4rT7SOVjP_PWkxdSpodpHCYOxxfVzm9FvUw
 
 {
     "title": "baru",
