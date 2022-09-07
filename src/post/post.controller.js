@@ -90,11 +90,17 @@ const getAllPost = async (req, res) => {
               
               const getAllPost = await postService.getAllPost(); 
 
-                if (getAllPost !=emptyResult) {  //JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
+              console.log("masuk langkah 1")
+
+                if (getAllPost !=emptyResult) {  
+                  console.log("masuk if 1")//JIKA POST ADA, MAKA AKAN MENGEMBALIKAN DATA PADA POST
                 return res.status(200).json(getAllPost);
+
+                
                 } 
 
-                else {  //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND     
+                else {  //JIKA POST TIDAK ADA, MAKA AKAN MENGEMBALIKAN POST NOT FOUND 
+                  console.log("masuk else")    
                 return res.status(404).json({ message: errorMessage.error404 });
                 }
               }
