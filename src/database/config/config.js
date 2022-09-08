@@ -2,9 +2,9 @@ require('dotenv').config(); //The dotenv to easily config the db configuration w
 
 module.exports = {
   "development": {
-    "username": process.env.DB_USER,
-    "password": process.env.DB_PASSWORD,
-    "database": process.env.DB_NAME,
+    "username": "dtuxpbmzqclnss",
+    "password": "83d09aa8483ef80a26e1ca15163cb6c0102f5d3cc9ab504835766349e64ecdc5",
+    "database": "der5rb7bb1aio2",
     "dialect": "postgresql"
   },
   "test": {
