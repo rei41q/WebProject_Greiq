@@ -29,7 +29,9 @@ const config = {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
-    port : process.env.DB_PORT,  
+    port : process.env.DB_PORT,    
+    URI : process.env.DB_URI,
+    HerokuCLI : process.env.DB_CLI,
     dialect: "postgres",
     
   },
