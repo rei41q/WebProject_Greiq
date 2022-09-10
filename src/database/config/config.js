@@ -1,31 +1,24 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
-  
+// async function hashHost() {
+//  const hashHost = await bcrypt.hash(process.env.DB_HOST, 10);
+//  return hashHost
+// }
 
+// async function hashUser() {
+//   const hashUser = await bcrypt.hash(process.env.DB_USER, 10);
+//   return hashUser
+//  }
 
+//  async function hashDatabse() {
+//   const hashDatabse= await bcrypt.hash(process.env.DB_NAME, 10);
+//   return hashDatabse
+//  }
 
+//  const databaseencript = hashDatabse;
 
-
-
-async function hashHost() {
- const hashHost = await bcrypt.hash(process.env.DB_HOST, 10);
- return hashHost
-}
-
-async function hashUser() {
-  const hashUser = await bcrypt.hash(process.env.DB_USER, 10);
-  return hashUser
- }
-
- async function hashDatabse() {
-  const hashDatabse= await bcrypt.hash(process.env.DB_NAME, 10);
-  return hashDatabse
- }
-
- const databaseencript = hashDatabse;
-
-console.log(hashDatabse);
+// console.log(hashDatabse);
 
   // DATABASE_URL : process.env.DATABASE_URL,
 
